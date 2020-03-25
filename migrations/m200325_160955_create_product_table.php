@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `{{%product}}`.
  */
-class m200325_152449_create_product_table extends Migration
+class m200325_160955_create_product_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -15,23 +15,25 @@ class m200325_152449_create_product_table extends Migration
         $this->createTable('{{%product}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(2048)->notNull(),
+            'image' => $this->string()->notNull(),
+            'status' => $this->boolean()->defaultValue(false),
             'description' => $this->text(),
-            'filter' => 'JSON NOT NULL',
-            'created_at' => $this->dateTime()->defaultExpression('NOW()'),
+            'feature_id' =>  $this->integer(),
+            'created_at' => $this->integer()->defaultExpression('NOW()'),
             'category_id' => $this->integer(),
         ]);
 
         $this->createIndex(
-            'idx-product-category_id',
+            'idx-product-feature_id',
             'product',
-            'category_id'
+            'feature_id'
         );
 
         $this->addForeignKey(
-            'fk-product-category_id',
+            'fk-product-feature_id',
             'product',
-            'category_id',
-            'category',
+            'feature_id',
+            'feature',
             'id',
             'RESTRICT'
         );
@@ -42,14 +44,13 @@ class m200325_152449_create_product_table extends Migration
      */
     public function safeDown()
     {
-
         $this->dropForeignKey(
-            'fk-product-category_id',
+            'fk-product-feature_id',
             'product'
         );
 
         $this->dropIndex(
-            'idx-product-category_id',
+            'idx-product-feature_id',
             'product'
         );
 
