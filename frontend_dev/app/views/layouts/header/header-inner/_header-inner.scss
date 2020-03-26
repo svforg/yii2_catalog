@@ -1,0 +1,300 @@
+$backgroundHeader                 : $colorBluePrimary;
+
+$colorHeaderLinkHover             : $colorBlueSecondary;
+$colorHeaderLink                  : $colorLightPrimary;
+$colorHeaderLinkChildren          : $colorDarkPrimary;
+$colorHeaderLinkChildrenHover     : $colorBlueSecondary;
+
+$backgroundHeaderDropDown: $colorLightPrimary;
+$borderUnderHeader                : $colorLightSecondary;
+
+.header {
+  position: absolute;
+  top: $topBarHeight;
+  left: 0;
+  z-index: 9;
+  width: 100%;
+  min-height: $headerHeight;
+  padding: 0;
+  background: $backgroundHeader;
+  transition: transform $transitionDurationPrimary $transitionFunctionPrimary;
+  @media ($laptopsMax) {
+    position: fixed;
+    top: 0;
+  }
+  @media ($phonesMax) {
+    min-height: $headerHeightMobile;
+  }
+
+  & > div {
+    background: $backgroundHeader;
+  }
+
+  &_fixed {
+    position: fixed;
+    top: 0;
+    transform: translateY(0);
+  }
+
+  &_hidden {
+    position: fixed;
+    transform: translateY(-199px);
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @media ($phonesMax) {
+      height: $headerHeightMobile;
+    }
+  }
+
+  &__logo {
+    width: 340px;
+    margin-right: auto;
+    @media ($laptopsMax) {
+      width: 150px;
+    }
+    @media ($largeTabletsMin) and ($laptopsMax) {
+      margin-right: 48px;
+    }
+    @media ($phonesMax) {
+      width: 132px;
+    }
+
+    .logo {
+      &__link {
+        display: flex;
+      }
+
+      &__img {
+        max-width: 150px;
+        @media ($laptopsMax) {
+          padding: 18px 0;
+        }
+        @media ($phonesMax) {
+          max-width: 132px;
+          height: 62px;
+          padding: 0;
+        }
+      }
+
+      &__text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: 14px;
+        color: $colorHeaderLink;
+        text-align: left;
+        @media ($laptopsMax) {
+          display: none;
+        }
+
+        &_strong {
+          margin-bottom: 4px;
+          font-size: 20px;
+          line-height: 20px;
+        }
+
+        &_hidden-tablet {
+          display: block;
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+
+  &__button-burger-outer {
+    position: absolute;
+    top: 24px;
+    right: 60px;
+    display: none;
+    @media ($laptopsMax) {
+      right: 20px;
+      display: flex;
+    }
+    @media ($largeTabletsMax) {
+      right: 20px;
+    }
+    @media ($phonesMax) {
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  &__nav-bar {
+    position: relative;
+    background: $backgroundHeader;
+    @media ($laptopsMax) {
+      position: absolute;
+      top: 87px;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      max-height: 85vh;
+      padding-bottom: 20px;
+      overflow-y: auto;
+      box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+      transform: translateY(-200%);
+      transition: transform $transitionDurationSecondary $transitionFunctionPrimary;
+    }
+    @media ($phonesMax) {
+      top: 61px;
+    }
+
+    &.header__nav-bar_active {
+      position: fixed;
+      transform: translateY(0%);
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      @media ($laptopsMax) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 20px;
+        background: $backgroundHeader;
+      }
+      @media ($smallTabletsMax) {
+        padding: $paddingWrapperLaptops;
+      }
+      @media ($phonesMax) {
+        top: 41px;
+        padding: $paddingWrapperMobile;
+      }
+
+      &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: $headerHeight;
+        margin-right: 10px;
+        @media ($laptopsMax) {
+          flex-direction: column;
+          align-items: flex-start;
+          height: auto;
+        }
+
+        &_active {
+          .menu__link {
+            box-shadow: inset 0 0 0 1px $colorLightPrimary;
+            @media ($laptopsMax) {
+              box-shadow: none;
+            }
+          }
+        }
+
+        &:last-child {
+          margin-right: 0;
+          margin-bottom: 0!important;
+        }
+      }
+
+      &__link {
+        position: relative;
+        padding: 10px;
+        color: $colorHeaderLink;
+        line-height: 15px;
+        text-align: center;
+        border-radius: $borderRadiusPrimary;
+        cursor: pointer;
+        transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+
+        &:hover {
+          box-shadow: inset 0 0 0 1px #fff;
+        }
+      }
+
+      &__children {
+        position: absolute;
+        top: 92px;
+        left: -24px;
+        z-index: 4;
+        display: none;
+        min-width: 250px;
+        max-height: 600px;
+        padding: 16px 24px;
+        background: $backgroundHeaderDropDown;
+        border-radius: $borderRadiusPrimary;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+        opacity: 0;
+        transition: max-height $transitionDurationSecondary $transitionFunctionPrimary;
+        @media ($laptopsMax) {
+          position: static;
+          margin-bottom: 10px;
+          padding: 0 8px;
+          background: $backgroundHeader;
+          box-shadow: none;
+          opacity: 1;
+
+          &::before, &::after {
+            display: none;
+          }
+        }
+
+        &::before, &::after {
+          position: absolute;
+          top: -20px;
+          left: 40px;
+          border: 10px solid transparent;
+          border-bottom: 10px solid rgba(0, 0, 0, 0.2);
+          content: "";
+        }
+
+        &::after {
+          top: -20px;
+          border-bottom: 10px solid $colorHeaderLink;
+        }
+
+        &.menu__children_active {
+          max-height: 500px;
+          padding: 0 8px 8px 8px;
+          transition: max-height $transitionDurationPrimary $transitionFunctionPrimary;
+        }
+
+        .menu__item {
+          display: block;
+          height: auto;
+          margin-right: 0;
+          margin-bottom: 12px;
+          padding: 0;
+
+          @media ($laptopsMax) {
+            padding-left: 16px;
+
+            .menu__link {
+              color: $colorHeaderLink;
+            }
+          }
+
+          &:hover {
+            .menu__link {
+              color: $colorHeaderLinkHover;
+            }
+          }
+        }
+
+        .menu__link {
+          display: block;
+          padding: 0;
+          color: $colorHeaderLinkChildren;
+          font-size: 16px;
+          line-height: 24px;
+          text-align: left;
+          transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+          @media ($laptopsMax) {
+            .menu__link {
+              color: $colorHeaderLink;
+            }
+          }
+        }
+      }
+    }
+  }
+}

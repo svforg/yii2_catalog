@@ -1,0 +1,165 @@
+body, html {
+  color: $colorMainFontDark;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: $mainFont;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  margin: $step9 0 26px 0;
+  padding: 0;
+  font-family: $secondFont;
+  @include fluidFontSize(24px, 36px, 480px, 768px, 18px);
+  @include fluidLineHeight(32px, 48px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: $step6 0 $step3 0;
+  }
+}
+
+h2 {
+  margin: $step3 0 14px 0;
+  padding: 0;
+  font-family: $secondFont;
+  @include fluidFontSize(20px, 30px, 480px, 768px, 18px);
+  @include fluidLineHeight(30px, 40px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: $step2 0 $step1 0;
+  }
+}
+
+h3	{
+  margin: $step3 0 14px 0;
+  padding: 0;
+  font-family: $secondFont;
+  @include fluidFontSize(18px, 24px, 480px, 768px, 18px);
+  @include fluidLineHeight(24px, 32px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: $step2 0 $step1 0;
+  }
+}
+
+h4	{
+  margin: $step3 0 14px 0;
+  padding: 0;
+  font-family: $secondFont;
+  @include fluidFontSize(16px, 20px, 480px, 768px, 18px);
+  @include fluidLineHeight(24px, 30px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: $step2 0 $step1 0;
+  }
+}
+
+h5	{
+  margin: $step3 0 14px 0;
+  padding: 0;
+  font-family: $secondFont;
+  @include fluidFontSize(18px, 25px, 480px, 768px, 18px);
+  @include fluidLineHeight(24px, 35px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: $step2 0 $step1 0;
+  }
+}
+
+h6 {
+  margin: $step3 0 14px 0;
+  padding: 0;
+  font-family: $mainFont;
+  @include fluidFontSize(16px, 18px, 480px, 768px, 18px);
+  @include fluidLineHeight(20px, 24px, 480px, 768px, 24px);
+  @media ($phonesMax) {
+    margin: $step2 0 $step1 0;
+  }
+}
+.hero__headline {
+  margin: $step9 0 26px 0;
+  padding: 0;
+  font-family: $secondFont;
+  @include fluidFontSize(24px, 42px, 480px, 1280px, 18px);
+  @include fluidLineHeight(32px, 56px, 480px, 1280px, 26px);
+  @media ($phonesMax) {
+    margin: $step6 0 $step3 0;
+  }
+}
+strong {
+  font-family: $secondFont;
+  @include fluidFontSize(16px, 18px, 480px, 768px, 18px);
+  @include fluidLineHeight(20px, 24px, 480px, 768px, 24px);
+}
+small {
+  margin: $step2 0;
+  padding: 0;
+  @include fluidFontSize(13px, 14px, 480px, 1280px, 14px);
+  @include fluidLineHeight(22px, 24px, 480px, 1280px, 24px);
+}
+
+p {
+  margin: 14px 0;
+  padding: 0;
+  @media ($phonesMax) {
+    margin: $step1 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  margin: 0;
+  padding: 0;
+}
+
+a, a:active, a:visited {
+  position: relative;
+  color: $colorMainFontOrange;
+  text-decoration: none;
+  transition: color $transitionDurationPrimary $transitionFunctionPrimary;
+
+  &.link_underline {
+    padding-bottom: 2px;
+    color: $colorMainFontOrange!important;
+    font-family: $secondFont;
+    @include fluidFontSize(16px, 18px, 480px, 768px, 18px);
+    @include fluidLineHeight(20px, 24px, 480px, 768px, 24px);
+    text-overflow: ellipsis;
+    text-shadow: none;
+    background: linear-gradient(90deg,var(--color-blue-primary),var(--color-blue-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-decoration-break: clone;
+
+    &:after {
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg,var(--color-blue-primary),var(--color-blue-secondary));
+      transition: width $transitionDurationPrimary $transitionFunctionSecondary;
+      content: "";
+    }
+  }
+}
+
+a:hover {
+  color: $colorMainFontGreen;
+
+  &.link_underline:after {
+    width: 100%;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  &:first-child {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+

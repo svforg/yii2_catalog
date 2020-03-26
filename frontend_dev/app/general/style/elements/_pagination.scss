@@ -1,0 +1,53 @@
+.pagination-navigation {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  .pagination {
+    padding: 17px 0;
+    position: relative;
+    overflow: auto;
+
+    span, a{
+      display: inline-block;
+      text-align: center;
+      width: 42px;
+      height: 42px;
+      margin-right: 16px;
+      padding: 8px 10px;
+      cursor: pointer;
+      border: 1px solid $colorGrayPrimary;
+      border-radius: $borderRadiusPrimary;
+      transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+
+      &.current,
+      &:hover {
+        background: $colorBluePrimary;
+        color: $colorLightPrimary;
+      }
+
+      &:before {
+        font-family: "fontawesome";
+      }
+
+      &.navigation_first:before {
+        content: "\f100";
+      }
+
+      &.navigation_prev:before {
+        content: "\f104";
+      }
+
+      &.navigation_next:before {
+        content: "\f105";
+      }
+
+      &.navigation_last:before {
+        content: "\f101";
+      }
+    }
+
+
+
+  }
+}

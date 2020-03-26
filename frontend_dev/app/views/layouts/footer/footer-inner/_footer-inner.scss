@@ -1,0 +1,198 @@
+.footer {
+  width: 100%;
+  overflow: hidden;
+  background: $backgroundFooterDark;
+
+  &__form-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 60px 0;
+    border-bottom: 1px solid $borderFooterLight;
+    @media ($largeTabletsMax) {
+      flex-wrap: wrap;
+    }
+    @media ($phonesMax) {
+      margin: 0;
+      padding: 20px 0
+    }
+  }
+
+  &__menu-inner {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 32px;
+    @media ($phonesMax) {
+      padding: 20px 0
+    }
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 100%;
+      border-bottom: 1px solid $borderFooterLight;
+      transform: translate(-50%, 0);
+      content: "";
+    }
+  }
+
+  &__headline {
+    margin-bottom: 20px;
+    color: $colorFooterFontLight;
+    font-size: 20px;
+    font-family: $mainFont;
+    @media ($largeTabletsMax) {
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .menu {
+    &__item {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__link {
+      display: block;
+      color: $colorFooterMenuFontLight;
+      line-height: 20px;
+      transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+
+      &:active, &:visited {
+        color: $colorFooterMenuFontLight;
+      }
+
+      &:hover {
+        color: $colorFooterFontActive;
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    @media ($largeTabletsMax) {
+      flex-wrap: wrap;
+    }
+    @media ($phonesMax) {
+      flex-direction: column;
+      padding: 0;
+    }
+
+    &__field {
+      width: 100%;
+      margin-bottom: 16px;
+      @media ($phonesMax) {
+        margin-right: 0;
+        margin-bottom: 24px;
+      }
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+
+  .contact-list {
+    display:flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin-left: -8px;
+    padding: 36px 24px;
+    @media ($largeTabletsMax) {
+      margin-left: 24px;
+      padding: 18px 0 10px;
+    }
+    @media ($smallTabletsMax) {
+      flex-direction: column;
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      margin-top: 2px;
+      overflow: hidden;
+      color: $colorFooterFontLight;
+      font: 300 14px/20px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+
+      &:hover {
+        color: $colorFooterFontActive!important;
+
+        &:after {
+          background: $colorFooterFontActive;
+        }
+      }
+
+      &::after {
+        background: $colorFooterFontLight;
+      }
+    }
+
+    &__item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 8px 56px 8px 0;
+      @media ($phonesMax) {
+        margin-bottom: 8px;
+        padding: 0;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__children {
+      display: flex;
+    }
+
+    &__child-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 20px;
+      height: 28px;
+      margin: 0  24px 0 0;
+      font-size: 22px;
+
+      svg {
+        max-height: 30px;
+
+        use {
+          transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+          fill: $colorFooterFontLight;
+        }
+      }
+
+      &:hover svg use {
+        fill: $colorFooterFontActive;
+      }
+    }
+  }
+
+  &__underbar {
+    margin: 32px 0;
+    color: $colorFooterMenuFontLight!important;
+  }
+
+  .mb-sm-3 {
+    @media ($laptopsMax) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+

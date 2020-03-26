@@ -1,0 +1,104 @@
+//$colorButtonText                  : $colorDarkPrimary;
+//$colorButtonTextHover             : $colorLightPrimary;
+//$colorButtonFilledText            : $colorLightPrimary;
+//
+//$colorButtonBorder                : $colorDarkPrimary;
+//$colorButtonBorderHover           : $colorOrangePrimary;
+//
+//$backgroundButtonHover            : $colorOrangePrimary;
+//$backgroundButtonFilled           : $colorOrangePrimary;
+//$backgroundButtonFilledHover      : $colorOrangeSecondary;
+
+.button {
+  position: relative;
+  display: inline-block;
+  max-width: 330px;
+  min-height: 40px;
+  padding: 8px 24px;
+  overflow: hidden;
+  color: $colorButtonText;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  background: transparent;
+  border: none;
+  border-radius: $borderRadiusPrimary;
+  cursor: pointer;
+  transition: color, background, box-shadow, $transitionDurationPrimary $transitionFunctionSecondary;
+
+  &:hover {
+    color:  $colorButtonTextHover!important;
+    background: $backgroundButtonHover;
+  }
+
+  &_filled {
+    color: $colorLinkButtonFilledText!important;
+    box-shadow: 0 2px 0 $colorBluePrimary,
+    inset 0 2px rgba(255,255,255,0.1);
+    background: $colorBlueThird;
+
+    &:hover {
+      background: $colorBlueSecondary;
+      box-shadow: 0 2px 0 #006799,
+      inset 0 2px rgba(255,255,255,0.1);
+    }
+
+    &:active {
+      background: #0073aa;
+      box-shadow: inset 0 2px 0 #006799,
+      inset 0 2px rgba(255,255,255,0.1);
+    }
+  }
+
+
+  &_default {
+    color:  $colorLightPrimary!important;
+    background: $colorBlueSecondary;
+    border: none;
+
+
+    &:hover {
+      color:  $colorBlueSecondary!important;
+      background:  $colorLinkButtonFilledText;
+      border: none;
+    }
+  }
+
+  &_light {
+    color:  $colorBluePrimary!important;
+    background: $colorLightPrimary;
+    border-color: $colorBluePrimary;
+
+    &:hover {
+      color:  $colorLightPrimary!important;
+      background:  $colorBlueSecondary;
+      border: $colorBlueSecondary;
+    }
+  }
+
+
+  &:disabled {
+    color:  $colorDarkPrimary!important;
+    background: $backgroundButtonDisabled;
+    border-color: #BABABA;
+    box-shadow: 0 2px 0 #BABABA,
+                inset 0 2px $colorGraySecondary;
+    opacity: 0.75;
+    cursor: default;
+  }
+
+  &_blink {
+    &:before {
+      height: 100%;
+      position: absolute;
+      content: '';
+      top: -50%;
+      right: -50%;
+      bottom: -50%;
+      left: -50%;
+      background: linear-gradient( to bottom, rgba( 255, 255, 255, 0.15 ) 0, rgba( 255, 255, 255, 0.75 ) 50%, rgba( 255, 255, 255, 0.15 ) 100%);
+      transform: rotateZ(60deg) translate(0, 800%);
+      animation: sheen 5s infinite ease-in-out 2s;
+    }
+  }
+}

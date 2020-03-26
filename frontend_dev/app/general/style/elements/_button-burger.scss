@@ -1,0 +1,70 @@
+//$backgroundBurgerLines            : $colorDarkPrimary;
+//$backgroundBurgerHover            : $colorOrangePrimary;
+
+.button-burger {
+  $self: &;
+  position: relative;
+  padding: 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover .button-burger__lines,
+  &:hover .button-burger__lines::before,
+  &:hover .button-burger__lines::after  {
+    background: $backgroundBurgerHover;
+  }
+
+  &__lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    margin-top: -1px;
+    margin-left: -10px;
+    background: $backgroundBurgerLines;
+    transition: transform $transitionDurationPrimary $transitionFunctionPrimary;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      margin-top: -1px;
+      margin-left: -10px;
+      background: $backgroundBurgerLines;
+      transition: transform $transitionDurationPrimary $transitionFunctionPrimary;
+    }
+
+    &::before {
+      transform: translateY(-6px);
+      content: '';
+    }
+
+    &::after {
+      transform: translateY(6px);
+      content: '';
+    }
+  }
+
+  &_active {
+    #{$self}__lines {
+      background: transparent!important;
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+
+
+

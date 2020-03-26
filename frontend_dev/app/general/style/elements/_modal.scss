@@ -1,0 +1,93 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  background: rgba(0,0,0,.6);
+  opacity: 0;
+
+  &_show {
+    display: block;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__heading {
+    text-align: center;
+  }
+
+  &__inner {
+    position: relative;
+    display: block;
+    max-width: 670px;
+    padding: 45px 32px 32px;
+    text-align: left;
+    //background: $backgroundModal;
+    background: linear-gradient(to right,$colorBluePrimary 39%, $colorBlueThird 100%);
+    color: $colorLightPrimary;
+    border-radius: $borderRadiusPrimary;
+    transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+    @media ($largeTabletsMax) {
+      width: 70%;
+    }
+    @media ($phonesMax) {
+      width: 90vw;
+    }
+  }
+
+  &__close  {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: $backgroundModalCloseLines;
+    border-radius: 50%;
+    box-shadow: 0 2px 7px 1px rgba(0,0,0,.6);
+    cursor: pointer;
+    transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+    content: '';
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 15px;
+      left: 6px;
+      width: 20px;
+      height: 2px;
+      background: $backgroundModalClose;
+      transform: rotate(45deg);
+      transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+      content: '';
+    }
+
+    &::after {
+      transform: rotate(135deg);
+    }
+
+    &:hover {
+      background: $backgroundModalCloseHover;
+
+      &::before,
+      &::after {
+        background: $backgroundModalCloseLinesHover;
+      }
+    }
+  }
+
+  &__preloader {
+    left: 50% !important;
+  }
+}
+
+

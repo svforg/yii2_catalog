@@ -1,0 +1,117 @@
+.main-page-about {
+  position: relative;
+  margin-bottom: $step12;
+  overflow: hidden;
+  @media ($largeTabletsMax) {
+    margin-bottom: $step6;
+  }
+  @media ($largeTabletsMax) {
+    margin-bottom: $step4;
+  }
+
+  .background {
+    position: absolute;
+    top: -128px;
+    right: 0;
+    left: 0;
+    z-index: -3;
+    @media ($laptopsMax) {
+      top: 0;
+    }
+    @media ($largeTabletsMax) {
+      display: none;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+      content:"";
+      @media ($largeTabletsMax) {
+        display: none;
+      }
+    }
+
+    &:before {
+      z-index: -2;
+      background: $colorBluePrimary;
+    }
+
+    &:after {
+      z-index: -1;
+      background: url(wp-content/themes/supertheme/assets/images/general/dotted-overlay.png);
+    }
+
+    &__relation {
+      position: relative;
+      z-index: -3;
+    }
+
+    &__ratio {
+      height: 0;
+      padding-top: 56.25%; /* 100 / 16 * 9 */
+    }
+
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .article {
+    position: relative;
+    display: block;
+    padding: 11% 0;
+    color: $colorLightPrimary;
+    @media ($laptopsMax) {
+      padding: 15% 0;
+    }
+    @media ($largeTabletsMax) {
+      padding: 0;
+      color: $colorDarkPrimary;
+    }
+
+    &__headline {
+      margin-top: 50px;
+      color: inherit;
+    }
+
+    &__type {
+      padding-right: 5px;
+
+      &-inner {
+        position: absolute;
+        left: 0;
+        margin: 0;
+        color: inherit;
+        text-align: left;
+      }
+    }
+
+    &__link-button {
+      position: relative;
+      margin-top: $step9;
+      @media ($largeTabletsMax) {
+        margin-top: $step6;
+      }
+    }
+  }
+
+  .typed-cursor {
+    color: $colorLightPrimary;
+    opacity: 1;
+    animation: blink 0.7s infinite ;
+  }
+  @keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+  }
+}

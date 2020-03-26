@@ -1,0 +1,38 @@
+.main-page-banner {
+  position: relative;
+  width: 100%;
+  margin-bottom: $step12;
+  padding: 48px 0;
+  overflow: hidden;
+  color: $colorLightPrimary;
+  background: linear-gradient(to right,$colorBluePrimary 39%, $colorBlueThird 100%);
+  @media ($largeTabletsMax) {
+    margin-bottom: $step3;
+  }
+  .article {
+    display: block;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    @media ($largeTabletsMax) {
+      margin-top: 24px;
+    }
+
+    &__title {
+      display: block;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    &__field {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}

@@ -1,6 +1,15 @@
 # phpstorm project files
 .idea
 
+# Dump file
+*.stackdump
+
+!.gitkeep
+*~
+*.iml
+.DS_Store
+.sass-cache
+
 # netbeans project files
 nbproject
 
@@ -9,8 +18,26 @@ nbproject
 .project
 .settings
 
+# Folder config file
+[Dd]esktop.ini
+
 # windows thumbnail cache
 Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
 
 # composer vendor dir
 /vendor
@@ -31,3 +58,7 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+# frontend_dev dependencies
+/frontend_dev/node_modules
+/frontend_dev/.idea

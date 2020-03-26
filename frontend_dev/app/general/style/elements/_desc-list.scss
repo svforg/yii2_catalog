@@ -1,0 +1,30 @@
+.desc-list {
+  &__item {
+    position: relative;
+    margin-bottom: 8px;
+    padding-left: 20px;
+
+    &:before {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: $colorLightPrimary;
+      border-radius: 50%;
+      border: 1px solid $colorBluePrimary;
+      content: "";
+    }
+
+    &_active:before {
+      background: $colorBluePrimary;
+    }
+  }
+
+  &_inverse {
+    .desc-list__item:before {
+      background: $colorBluePrimary;
+      border-color: $colorLightPrimary;
+    }
+  }
+}
