@@ -7,11 +7,28 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'layout' => 'main',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'cabinet' => [
+            'class' => 'app\modules\cabinet\Admin',
+            'layout' => 'cabinet',
+        ],
+    ],
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    //AdminLTE
+                    '@app/cabinet/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
+                    //YII2-user
+                    //'@dektrium/user/views' => '@app/views/user'
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'VoUraILnoEVj4EKYUVjN7YsKfwfW15TV',

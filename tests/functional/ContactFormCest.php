@@ -9,14 +9,14 @@ class ContactFormCest
 
     public function openContactPage(\FunctionalTester $I)
     {
-        $I->see('Contact', 'h1');        
+        $I->see('contact', 'h1');
     }
 
     public function submitEmptyForm(\FunctionalTester $I)
     {
         $I->submitForm('#contact-form', []);
         $I->expectTo('see validations errors');
-        $I->see('Contact', 'h1');
+        $I->see('contact', 'h1');
         $I->see('Name cannot be blank');
         $I->see('Email cannot be blank');
         $I->see('Subject cannot be blank');

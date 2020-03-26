@@ -12,7 +12,7 @@ class ContactCest
     public function contactPageWorks(AcceptanceTester $I)
     {
         $I->wantTo('ensure that contact page works');
-        $I->see('Contact', 'h1');
+        $I->see('contact', 'h1');
     }
 
     public function contactFormCanBeSubmitted(AcceptanceTester $I)

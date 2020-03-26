@@ -19,7 +19,7 @@ class m200325_160955_create_product_table extends Migration
             'status' => $this->boolean()->defaultValue(false),
             'description' => $this->text(),
             'feature_id' =>  $this->integer(),
-            'created_at' => $this->integer()->defaultExpression('NOW()'),
+            'created_at' => $this->integer(),
             'category_id' => $this->integer(),
         ]);
 
