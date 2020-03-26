@@ -8,11 +8,12 @@ use app\modules\cabinet\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\cabinet\controllers\DefaultController;
 
 /**
  * NewsController implements the CRUD actions for News model.
  */
-class NewsController extends Controller
+class NewsController extends DefaultController
 {
     /**
      * {@inheritdoc}

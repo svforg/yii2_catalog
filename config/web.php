@@ -17,6 +17,10 @@ $config = [
             'class' => 'app\modules\cabinet\Admin',
             'layout' => 'cabinet',
         ],
+        'treemanager' =>  [
+            'class' => '\kartik\tree\Module',
+            // other module settings, refer detailed documentation
+        ],
     ],
     'components' => [
         'view' => [

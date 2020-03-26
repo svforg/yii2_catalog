@@ -3,16 +3,16 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\models\Product;
+use app\modules\cabinet\models\Product;
 use app\modules\cabinet\models\ProductSearch;
-use yii\web\Controller;
+use app\modules\cabinet\controllers\DefaultController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * ProductController implements the CRUD actions for Product model.
  */
-class ProductController extends Controller
+class ProductController extends DefaultController
 {
     /**
      * {@inheritdoc}

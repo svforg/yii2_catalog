@@ -8,11 +8,12 @@ use app\modules\cabinet\models\FeatureSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\cabinet\controllers\DefaultController;
 
 /**
  * FeatureController implements the CRUD actions for Feature model.
  */
-class FeatureController extends Controller
+class FeatureController extends DefaultController
 {
     /**
      * {@inheritdoc}

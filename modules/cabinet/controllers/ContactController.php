@@ -7,7 +7,7 @@ use app\modules\cabinet\models\Contact;
 use app\modules\cabinet\models\ContactSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\modules\cabinet\controllers\DefaultController;
 /**
  * ContactController implements the CRUD actions for contact model.
  */
