@@ -3,7 +3,7 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\models\News;
+use app\modules\cabinet\models\News;
 use app\modules\cabinet\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

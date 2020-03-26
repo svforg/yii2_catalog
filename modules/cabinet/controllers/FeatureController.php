@@ -3,7 +3,7 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\models\Feature;
+use app\modules\cabinet\models\Feature;
 use app\modules\cabinet\models\FeatureSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
