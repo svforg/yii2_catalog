@@ -41,12 +41,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'cacheSettings' => [
             'enableCache' => false   // defaults to true
         ],
-        'nodeAddlViews' => [
-            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form',
-        ],
-        'nodeFormOptions' => [
-                'enctype' => 'miltipart/form-data',
-        ],
+//        'nodeAddlViews' => [
+//            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form',
+//        ],
+//        'nodeFormOptions' => [
+//                'enctype' => 'miltipart/form-data',
+//        ],
+//        'nodeActions' => [
+//            \kartik\tree\Module::NODE_SAVE => Tree::saveImageFile($this),
+//        ]
 
 
     ]);

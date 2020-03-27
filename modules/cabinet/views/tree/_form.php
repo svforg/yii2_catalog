@@ -1,14 +1,33 @@
 <?php
-use kartik\file\FileInput;
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Tree */
+/* @var $form yii\widgets\ActiveForm */
 ?>
-<div class="row">
-    <div class="col-sm-8">
-        <?=
 
-        $form->field($node, 'file')->widget(FileInput::className(), [
-                    'options' => ['accept' => '@images/*'],
-        ]);
+<div class="Tree-form">
 
-        ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
+
+
+    <?=
+    $form->field($model, 'file')->widget(kartik\file\FileInput::className(), [
+        'options' => ['accept' => 'image/*'],
+    ]);
+    ?>
+
+
+
+
+    <div class="form-group">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+
+    <?php ActiveForm::end(); ?>
+
 </div>

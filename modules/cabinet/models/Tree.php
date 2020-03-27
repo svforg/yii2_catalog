@@ -2,11 +2,13 @@
 
 namespace app\modules\cabinet\models;
 
-use http\Url;
+//use http\Url;
 use Yii;
-use yii\image\drivers\Image;
+//use yii\image\drivers\Image;
+use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
-use kartik\file\FileInput;
+//use kartik\file\FileInput;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "tree".
@@ -32,13 +34,15 @@ use kartik\file\FileInput;
  * @property integer $removable
  * @property integer $removable_all
  * @property integer $child_allowed
- * @property integer $image_url
- *
+ * @property integer $image
  * @property Feature $feature
  */
-class Tree extends \kartik\tree\models\Tree
+//class Tree extends \kartik\tree\models\Tree
+class Tree extends ActiveRecord
 {
+
     public $file;
+
     /**
      * @inheritdoc
      */
@@ -57,10 +61,10 @@ class Tree extends \kartik\tree\models\Tree
             [['name'], 'required'],
             [['name'], 'string', 'max' => 60],
             [[], 'string', 'max' => 100],
-            [['image_url'], 'string', 'max' => 100],
+            [['image'], 'string', 'max'=>2048],
             [['file'], 'image'],
             [['icon'], 'string', 'max' => 255],
-            [['root', 'id', 'lft', 'rgt', 'lvl', 'url' ], 'safe']
+            [['root', 'id', 'lft', 'rgt', 'lvl', 'url'], 'safe']
 
         ];
     }
@@ -92,67 +96,65 @@ class Tree extends \kartik\tree\models\Tree
             'movable_r' => 'Movable R',
             'removable' => 'Removable',
             'removable_all' => 'Removable All',
-            'image_url' => 'Изображение',
+            'image' => 'Изображение',
             'file' => 'Изображение',
         ];
     }
 
-    public function showAttachment()
-    {
-        $dir = Url::home(true).'/uploads/images/categories/';
-
-        return $dir.'50x50/'.$this->image;
-    }
 
     public function beforeSave($insert)
     {
+        $dir = dirname(dirname(dirname(__DIR__))) . '/web/uploads/images';
 
 
         if ( $file = UploadedFile::getInstance($this, 'file') ) {
 
-            var_dump( $file);
             //определяем путь
-            $dir = Yii::getAlias('@images') . '/categories/';
+
 
             // Удаляем скопированные файлы
             if ( file_exists($dir.$this->image ) ) {
 
-                unlink($dir.$this->image );
+                // unlink($dir.$this->image );
             }
             // Удаляем скопированные файлы
             if ( file_exists($dir.'50x50/'.$this->image ) ) {
 
-                unlink($dir.'50x50/'.$this->image );
+                // unlink($dir.'50x50/'.$this->image );
             }
             // Удаляем скопированные файлы
             if ( file_exists($dir.'800x/'.$this->image ) ) {
 
-                unlink($dir.'800x/'.$this->image );
+                // unlink($dir.'800x/'.$this->image );
             }
 
             // Задаем уникальное название файла
             $this->image = strtotime('now').'_'.Yii::$app->getSecurity()->generateRandomString(6) . '.' . $file->extension;
 
+
             // Сохраняем файл
             $file->saveAs($dir.$this->image);
-
+var_dump($dir.$this->image);
             // загружаем изображение для resize 50x50
             $imageFile = Yii::$app->image->load($dir.$this->image);
+
+
             // При resize ставится черный цвет по умолчанию
-            $imageFile->background('#fff', 0);
-            $imageFile->resize('50', '50', Image::INVERSE);
-            $imageFile->crop('50', '50');
-            $imageFile->save($dir.'50x50/'.$this->image, 90);
+//            $imageFile->background('#fff', 0);
+//            $imageFile->resize('50', '50', Image::INVERSE);
+//            $imageFile->crop('50', '50');
+//            $imageFile->save($dir.'50x50/'.$this->image, 90);
 
             // загружаем изображение для resize 800x
-            $imageFile = Yii::$app->image->load($dir.$this->image);
+            //$imageFile = Yii::$app->image->load($dir.$this->image);
             // При resize ставится черный цвет по умолчанию
-            $imageFile->background('#fff', 0);
-            $imageFile->resize('800', null, Image::INVERSE);
-            $imageFile->save($dir.'800x/'.$this->image, 90);
-
+//            $imageFile->background('#fff', 0);
+//            $imageFile->resize('800', null, Image::INVERSE);
+//            $imageFile->save($dir.'800x/'.$this->image, 90);
         }
 
         return parent::beforeSave($insert);
     }
+
+
 }

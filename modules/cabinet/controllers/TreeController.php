@@ -5,8 +5,12 @@ namespace app\modules\cabinet\controllers;
 use Yii;
 use app\modules\cabinet\controllers\DefaultController;
 use app\modules\cabinet\models\Tree;
+use app\modules\cabinet\models\TreeSearch;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
+
+
+
 
 
 
@@ -27,11 +31,26 @@ class TreeController extends DefaultController
         ];
     }
 
+    /**
+     * Lists all Tree models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new TreeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
-     * Displays a single KartikTreeMenu model.
-     * @param string $id
+     * Displays a single Tree model.
+     * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
@@ -41,48 +60,59 @@ class TreeController extends DefaultController
     }
 
     /**
-     * Creates a new KartikTreeMenu model.
+     * Creates a new Tree model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
         $model = new Tree();
-//        var_dump($model);
-        $model->makeRoot();
+
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('/');
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+
+
+
+            Yii::$app->session->setFlash('success', "Статья сохранена");
+
+            return $this->redirect(['view', 'id' => $model->id]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Updates an existing KartikTreeMenu model.
+     * Updates an existing Tree model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            Yii::$app->session->setFlash('success', "Статья сохранена");
+
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Deletes an existing KartikTreeMenu model.
+     * Deletes an existing Tree model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
@@ -92,23 +122,18 @@ class TreeController extends DefaultController
     }
 
     /**
-     * Finds the KartikTreeMenu model based on its primary key value.
+     * Finds the Tree model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return KartikTreeMenu the loaded model
+     * @param integer $id
+     * @return Tree the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
         if (($model = Tree::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
 
-    public function actionIndex()
-    {
-        return $this->render('index');
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
