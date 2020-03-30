@@ -27,7 +27,9 @@ $config = [
         'image' => [
             'class' => 'yii\image\ImageDriver',
         ],
-
+        'ImageUploader' => [
+            'class' => 'app\components\ImageUploader'
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [

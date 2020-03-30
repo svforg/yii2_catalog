@@ -10,6 +10,7 @@ use yii\image\drivers\Image;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use app\components\ImageUploader;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -67,14 +68,14 @@ class ProductController extends DefaultController
     public function actionCreate()
     {
         $model = new Product();
+
         if( $model->load(Yii::$app->request->post())  && $model->validate() )
         {
-            $dir = Yii::getAlias('@app/web/uploads/');
-            $model->image = Product::saveImageFile($model);
-            $model->save();
-            $model->file->saveAs($dir . 'images/categories/' . $model->image);
+            $imageUploader = new ImageUploader($model);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            $imageUploader = Yii::$app->ImageUploader->resizeImageFile($model);
+
+            return $this->redirect(['view', 'id' => $imageUploader->id]);
         }
 
         return $this->render('create', [
@@ -93,7 +94,13 @@ class ProductController extends DefaultController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if( $model->load(Yii::$app->request->post())  && $model->validate() )
+        {
+            $model->image = Product::saveImageFile($model);
+            Yii::$app->ImageUploader->mySuperMethod();
+            $model->save();
+            $model->image = Product::cropImageFile($model);
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
