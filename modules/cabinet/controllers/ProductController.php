@@ -6,8 +6,10 @@ use Yii;
 use app\modules\cabinet\models\Product;
 use app\modules\cabinet\models\ProductSearch;
 use app\modules\cabinet\controllers\DefaultController;
+use yii\image\drivers\Image;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -65,8 +67,13 @@ class ProductController extends DefaultController
     public function actionCreate()
     {
         $model = new Product();
+        if( $model->load(Yii::$app->request->post())  && $model->validate() )
+        {
+            $dir = Yii::getAlias('@app/web/uploads/');
+            $model->image = Product::saveImageFile($model);
+            $model->save();
+            $model->file->saveAs($dir . 'images/categories/' . $model->image);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

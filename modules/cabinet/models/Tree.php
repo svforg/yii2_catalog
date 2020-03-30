@@ -38,10 +38,9 @@ use yii\db\ActiveRecord;
  * @property integer $image
  * @property Feature $feature
  */
-class Tree extends \kartik\tree\models\Tree
-//class Tree extends ActiveRecord
+//class Tree extends \kartik\tree\models\Tree
+class Tree extends ActiveRecord
 {
-
     public $file;
 
     /**
@@ -59,13 +58,13 @@ class Tree extends \kartik\tree\models\Tree
     {
         return [
             [['lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all'], 'integer'],
-            [['name'], 'required'],
+            //[['name'], 'required'],
             [['name'], 'string', 'max' => 60],
             [['image'], 'string', 'max'=>2048],
-            [['file'], 'image'],
+            [['file'], 'file', 'extensions' => 'png, jpg',
+                'skipOnEmpty' => false],
             [['icon'], 'string', 'max' => 255],
-            [['root', 'id', 'lft', 'rgt', 'lvl', 'url'], 'safe']
-
+            [['root', 'id', 'lft', 'rgt', 'lvl', 'url', 'image'], 'safe']
         ];
     }
 
@@ -136,6 +135,31 @@ class Tree extends \kartik\tree\models\Tree
 
     public function beforeSave($insert)
     {
+        if (  $file = UploadedFile::getInstance($this, 'file') ) {
+
+            $dir = Yii::getAlias('@app/web/uploads/');
+            $this->image = strtotime('now') . '_' . Yii::$app->getSecurity()->generateRandomString(6) . '.' . $file->extension;
+            $file->saveAs($dir . $this->image);
+
+            // загружаем изображение для resize 50x50s
+            $imageFile = Yii::$app->image->load($dir . $this->image);
+
+            // При resize ставится черный цвет по умолчанию
+            $imageFile->background('#fff', 0);
+            $imageFile->resize('50', '50', Image::INVERSE);
+            $imageFile->crop('50', '50');
+            //chmod($dir.'images/categories/800x/'.$this->image,0750);
+            $imageFile->save($dir . 'images/categories/50x50/' . $this->image, 90);
+
+            // загружаем изображение для resize 800x
+            $imageFile = Yii::$app->image->load($dir . $this->image);
+            // При resize ставится черный цвет по умолчанию
+            $imageFile->background('#fff', 0);
+            $imageFile->resize('800', null, Image::INVERSE);
+            //chmod($dir.'images/categories/800x/'.$this->image,0750);
+            $imageFile->save($dir . 'images/categories/800x/' . $this->image, 90);
+        }
+
 
 
         return parent::beforeSave($insert);
