@@ -18,16 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Tree', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php
-
-    echo TreeView::widget([
-        // single query fetch to render the tree
-        // use the Product model you have in the previous step
+    <?= TreeView::widget([
         'query' => Tree::find()->addOrderBy('root, lft'),
         'headingOptions' => ['label' => 'Меню'],
-        'fontAwesome' => true,     // font awesome icons instead of glyphicons
-        'isAdmin' => true,         // optional (toggle to enable admin mode)
-        'displayValue' => 1,        // initial display value
+        'fontAwesome' => true,
+        'isAdmin' => true,
+        'displayValue' => 1,
         'iconEditSettings' => [
             'show' => 'list',
             'listData' => [
@@ -37,23 +33,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'bell' => 'Bell',
             ],
         ],
-        'softDelete' => false,       // Удаление пункта
+        'softDelete' => false,
         'cacheSettings' => [
             'enableCache' => false   // defaults to true
         ],
-//        'nodeAddlViews' => [
-//            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form',
-//        ],
-//        'nodeFormOptions' => [
-//                'enctype' => 'miltipart/form-data',
-//        ],
+        'nodeAddlViews' => [
+            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form',
+        ],
+        'nodeFormOptions' => [
+                'enctype' => 'miltipart/form-data',
+        ],
 //        'nodeActions' => [
-//            \kartik\tree\Module::NODE_SAVE => Tree::saveImageFile($this),
+//            \kartik\tree\Module::NODE_SAVE => \yii\helpers\Url::to(['/treemanager/node/save']),
+//            //\kartik\tree\Module::NODE_SAVE => Tree::uploadImageField($this),
 //        ]
-
 
     ]);
     ?>
-
-
 </div>

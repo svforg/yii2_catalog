@@ -24,6 +24,10 @@ $config = [
         ],
     ],
     'components' => [
+        'image' => [
+            'class' => 'yii\image\ImageDriver',
+        ],
+
         'view' => [
             'theme' => [
                 'pathMap' => [

@@ -33,7 +33,9 @@ class m200326_124122_create_tree_table extends Migration
             'movable_r' => $this->boolean()->notNull()->defaultValue(true),
             'removable' => $this->boolean()->notNull()->defaultValue(true),
             'removable_all' => $this->boolean()->notNull()->defaultValue(false),
-            'child_allowed' => $this->boolean()->notNull()->defaultValue(false)
+            'child_allowed' => $this->boolean()->notNull()->defaultValue(false),
+            'image' => $this->string(255),
+            'url' => $this->string(255),
         ]);
     }
 

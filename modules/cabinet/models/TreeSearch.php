@@ -17,7 +17,7 @@ class TreeSearch extends Tree
     {
         return [
             [['id', 'root', 'lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed'], 'integer'],
-            [['name', 'icon', 'image_url'], 'safe'],
+            [['name', 'icon', 'image'], 'safe'],
         ];
     }
 
@@ -80,7 +80,7 @@ class TreeSearch extends Tree
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'icon', $this->icon])
-            ->andFilterWhere(['like', 'image_url', $this->image_url]);
+            ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
     }
