@@ -103,9 +103,7 @@ class Tree extends \kartik\tree\models\Tree
     {
         parent::afterSave($insert, $changedAttributes);
 
-
-            $this->file = UploadedFile::getInstance($this->file, 'file');
-            printArr($this);
+//        $this->file = UploadedFile::getInstance($this->file, 'file');
 //        $dir = Yii::getAlias('@app/web/uploads/');
 //        $this->image = strtotime('now') . '_' . Yii::$app->getSecurity()->generateRandomString(6) . '.' . $this->file->extension;
 //        $this->file->saveAs($dir . 'images/categories/' . $this->image);
