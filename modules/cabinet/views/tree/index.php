@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <!--?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]); ?-->
 
     <?= TreeView::widget([
         'query' => Tree::find()->addOrderBy('root, lft'),
@@ -75,11 +75,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'cacheSettings' => [
             'enableCache' => false   // defaults to true
         ],
-        //'nodeView' => '@app/modules/cabinet/views/tree/_form',
-        'nodeAddlViews' => [
-            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form_upload_image',
-        ],
-
+        'nodeView' => '@app/modules/cabinet/views/tree/_form_tree',
+//        'nodeAddlViews' => [
+//            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form_upload_image',
+//        ],
         'nodeFormOptions' => [
             'enctype' => 'miltipart/form-data',
         ],
