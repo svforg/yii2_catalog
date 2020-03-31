@@ -17,6 +17,8 @@ use Yii;
  */
 class News extends \yii\db\ActiveRecord
 {
+    public $file;
+
     /**
      * {@inheritdoc}
      */
@@ -31,11 +33,14 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'image'], 'required'],
+            [['name'], 'required'],
             [['status', 'created_at'], 'integer'],
             [['text'], 'string'],
             [['name', 'subject'], 'string', 'max' => 2048],
             [['image'], 'string', 'max' => 255],
+            [['image', 'file'], 'safe'],
+            [['file'], 'file', 'extensions' => 'png, jpg',
+                'skipOnEmpty' => true],
         ];
     }
 
@@ -47,7 +52,8 @@ class News extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'image' => 'Image',
+            'image' => 'Изображение',
+            'file' => 'Изображение',
             'status' => 'Status',
             'subject' => 'Subject',
             'text' => 'Text',

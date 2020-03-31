@@ -3,13 +3,11 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\modules\cabinet\models\Product;
-use app\modules\cabinet\models\ProductSearch;
-use app\modules\cabinet\controllers\DefaultController;
-use yii\image\drivers\Image;
+use app\models\Product;
+use app\models\ProductSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
+use app\modules\cabinet\controllers\DefaultController;
 use app\components\ImageUploader;
 
 /**
@@ -49,7 +47,7 @@ class ProductController extends DefaultController
 
     /**
      * Displays a single Product model.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -72,10 +70,10 @@ class ProductController extends DefaultController
         if( $model->load(Yii::$app->request->post())  && $model->validate() )
         {
             $imageUploader = new ImageUploader($model);
+            $model->save();
+            $imageUploader->resizeImageFile($model);
 
-            $imageUploader = Yii::$app->ImageUploader->resizeImageFile($model);
-
-            return $this->redirect(['view', 'id' => $imageUploader->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -86,7 +84,7 @@ class ProductController extends DefaultController
     /**
      * Updates an existing Product model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -96,10 +94,9 @@ class ProductController extends DefaultController
 
         if( $model->load(Yii::$app->request->post())  && $model->validate() )
         {
-            $model->image = Product::saveImageFile($model);
-            Yii::$app->ImageUploader->mySuperMethod();
+            $imageUploader = new ImageUploader($model);
             $model->save();
-            $model->image = Product::cropImageFile($model);
+            $imageUploader->resizeImageFile($model);
 
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -112,12 +109,14 @@ class ProductController extends DefaultController
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
+        ImageUploader::deleteImageFile($this->findModel($id));
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -126,7 +125,7 @@ class ProductController extends DefaultController
     /**
      * Finds the Product model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param string $id
      * @return Product the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

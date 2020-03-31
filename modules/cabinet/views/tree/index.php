@@ -1,10 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\tree\TreeView;
-use app\modules\cabinet\models\Tree;
+use yii\grid\GridView;
+use \kartik\tree\TreeView;
+use app\models\Tree;
+
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\cabinet\models\TreeSearch */
+/* @var $searchModel app\models\TreeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Trees';
@@ -17,6 +19,42 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Tree', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'root',
+            'lft',
+            'rgt',
+            'lvl',
+            //'name',
+            //'icon',
+            //'icon_type',
+            //'active',
+            //'selected',
+            //'disabled',
+            //'readonly',
+            //'visible',
+            //'collapsed',
+            //'movable_u',
+            //'movable_d',
+            //'movable_l',
+            //'movable_r',
+            //'removable',
+            //'removable_all',
+            //'child_allowed',
+            //'image',
+            //'url:url',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
     <?= TreeView::widget([
         'query' => Tree::find()->addOrderBy('root, lft'),
@@ -37,17 +75,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'cacheSettings' => [
             'enableCache' => false   // defaults to true
         ],
+        //'nodeView' => '@app/modules/cabinet/views/tree/_form',
         'nodeAddlViews' => [
-            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form',
+            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form_upload_image',
         ],
+
         'nodeFormOptions' => [
-                'enctype' => 'miltipart/form-data',
+            'enctype' => 'miltipart/form-data',
         ],
 //        'nodeActions' => [
-//            \kartik\tree\Module::NODE_SAVE => \yii\helpers\Url::to(['/treemanager/node/save']),
-//            //\kartik\tree\Module::NODE_SAVE => Tree::uploadImageField($this),
+//            \kartik\tree\Module::NODE_SAVE => \yii\helpers\Url::to(['/cabinet/tree/save']),
+//            //\kartik\tree\Module::NODE_SAVE => TreeController::actionSave($this),
+//            //\kartik\tree\Module::NODE_SAVE => Yii::getAlias('@app/cabinet/tree/save'),
 //        ]
 
     ]);
     ?>
+
+
 </div>

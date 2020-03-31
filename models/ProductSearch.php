@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\cabinet\models;
+namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\cabinet\models\Product;
+use app\models\Product;
 
 /**
- * ProductSearch represents the model behind the search form of `app\models\Product`.
+ * ProductSearch represents the model behind the search form of `\app\models\Product`.
  */
 class ProductSearch extends Product
 {
@@ -17,8 +17,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'status', 'feature_id', 'created_at', 'category_id'], 'integer'],
-            [['name', 'image', 'description'], 'safe'],
+            [['id', 'root', 'lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed', 'status', 'feature_id', 'created_at', 'category_id'], 'integer'],
+            [['name', 'icon', 'image', 'url', 'description'], 'safe'],
         ];
     }
 
@@ -59,6 +59,24 @@ class ProductSearch extends Product
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'root' => $this->root,
+            'lft' => $this->lft,
+            'rgt' => $this->rgt,
+            'lvl' => $this->lvl,
+            'icon_type' => $this->icon_type,
+            'active' => $this->active,
+            'selected' => $this->selected,
+            'disabled' => $this->disabled,
+            'readonly' => $this->readonly,
+            'visible' => $this->visible,
+            'collapsed' => $this->collapsed,
+            'movable_u' => $this->movable_u,
+            'movable_d' => $this->movable_d,
+            'movable_l' => $this->movable_l,
+            'movable_r' => $this->movable_r,
+            'removable' => $this->removable,
+            'removable_all' => $this->removable_all,
+            'child_allowed' => $this->child_allowed,
             'status' => $this->status,
             'feature_id' => $this->feature_id,
             'created_at' => $this->created_at,
@@ -66,7 +84,9 @@ class ProductSearch extends Product
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'icon', $this->icon])
             ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'url', $this->url])
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;

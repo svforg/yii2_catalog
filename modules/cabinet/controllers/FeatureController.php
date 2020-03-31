@@ -3,8 +3,8 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\modules\cabinet\models\Feature;
-use app\modules\cabinet\models\FeatureSearch;
+use app\models\Feature;
+use app\models\FeatureSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

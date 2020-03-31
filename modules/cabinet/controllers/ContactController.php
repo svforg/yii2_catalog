@@ -3,8 +3,8 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\modules\cabinet\models\Contact;
-use app\modules\cabinet\models\ContactSearch;
+use app\models\Contact;
+use app\models\ContactSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\modules\cabinet\controllers\DefaultController;

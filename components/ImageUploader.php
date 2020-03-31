@@ -7,7 +7,8 @@
  */
 
 namespace app\components;
-
+use Yii;
+use yii\image\drivers\Image;
 use yii\base\Component;
 use yii\web\UploadedFile;
 
@@ -15,8 +16,6 @@ class ImageUploader extends Component
 {
     public function resizeImageFile($model)
     {
-        self::__construct($model);
-        $model->save();
 
         $dir = Yii::getAlias('@app/web/uploads/');
         $model->file->saveAs($dir . 'images/categories/' . $model->image);
@@ -39,7 +38,8 @@ class ImageUploader extends Component
 
     public function saveImageFile($model)
     {
-        $model->file = UploadedFile::getInstance($this, 'file');
+
+        $model->file = UploadedFile::getInstance($model, 'file');
 
         if ( !empty($model->file) )
         {
@@ -70,5 +70,23 @@ class ImageUploader extends Component
         //self::resizeImageFile($model);
         parent::__construct($config);
 
+    }
+
+    public function deleteImageFile($model)
+    {
+        $dir = Yii::getAlias('@app/web/uploads/');
+
+        if ( file_exists($dir.'images/categories/'.$model->image ) ) {
+
+            unlink($dir.'images/categories/'.$model->image );
+        }
+        if ( file_exists($dir.'images/categories/50x50/'.$model->image ) ) {
+
+            unlink($dir.'images/categories/50x50/'.$model->image );
+        }
+        if ( file_exists($dir.'images/categories/800x/'.$model->image ) ) {
+
+            unlink($dir.'images/categories/800x/'.$model->image );
+        }
     }
 }

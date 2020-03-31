@@ -50,7 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'removable',
             'removable_all',
             'child_allowed',
-            'image_url:url',
+            'image',
+            'url:url',
         ],
     ]) ?>
 

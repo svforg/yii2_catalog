@@ -3,12 +3,12 @@
 namespace app\modules\cabinet\controllers;
 
 use Yii;
-use app\modules\cabinet\models\News;
-use app\modules\cabinet\models\NewsSearch;
-use yii\web\Controller;
+use app\models\News;
+use app\models\NewsSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\modules\cabinet\controllers\DefaultController;
+use app\components\ImageUploader;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -67,7 +67,12 @@ class NewsController extends DefaultController
     {
         $model = new News();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if( $model->load(Yii::$app->request->post())  && $model->validate() )
+        {
+            $imageUploader = new ImageUploader($model);
+            $model->save();
+            $imageUploader->resizeImageFile($model);
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -87,7 +92,12 @@ class NewsController extends DefaultController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if( $model->load(Yii::$app->request->post())  && $model->validate() )
+        {
+            $imageUploader = new ImageUploader($model);
+            $model->save();
+            $imageUploader->resizeImageFile($model);
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -105,6 +115,8 @@ class NewsController extends DefaultController
      */
     public function actionDelete($id)
     {
+        ImageUploader::deleteImageFile($this->findModel($id));
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

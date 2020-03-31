@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\cabinet\models\TreeSearch */
+/* @var $model app\models\TreeSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -57,7 +57,9 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'child_allowed') ?>
 
-    <?php // echo $form->field($model, 'image_url') ?>
+    <?php // echo $form->field($model, 'image') ?>
+
+    <?php // echo $form->field($model, 'url') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

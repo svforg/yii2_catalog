@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use \kartik\file\FileInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -10,11 +11,15 @@ use yii\widgets\ActiveForm;
 
 <div class="news-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file')->widget(FileInput::className(), [
+        'options' => ['accept' => '@images/*'],
+    ]) ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 
