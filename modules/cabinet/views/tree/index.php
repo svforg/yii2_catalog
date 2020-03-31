@@ -75,13 +75,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'cacheSettings' => [
             'enableCache' => false   // defaults to true
         ],
-        'nodeView' => '@app/modules/cabinet/views/tree/_form_tree',
+        //'nodeView' => '@app/modules/cabinet/views/tree/_form_tree',
 //        'nodeAddlViews' => [
 //            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form_upload_image',
 //        ],
-        'nodeFormOptions' => [
-            'enctype' => 'miltipart/form-data',
-        ],
+
 //        'nodeActions' => [
 //            \kartik\tree\Module::NODE_SAVE => \yii\helpers\Url::to(['/cabinet/tree/save']),
 //            //\kartik\tree\Module::NODE_SAVE => TreeController::actionSave($this),

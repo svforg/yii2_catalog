@@ -20,8 +20,14 @@ $config = [
         ],
         'treemanager' =>  [
             'class' => '\kartik\tree\Module',
-            // other module settings, refer detailed documentation
+            'treeViewSettings' => [
+                'nodeView' => '@app/modules/cabinet/views/tree/_form_tree',
+                'nodeFormOptions' => [
+                    'enctype' => 'miltipart/form-data',
+                ],
+            ],
         ],
+
     ],
     'components' => [
         'image' => [

@@ -76,7 +76,7 @@ if ($node->isNewRecord) {
 $module = TreeView::module();
 
 // active form instance
-$form = ActiveForm::begin(['action' => $formAction, 'options' => $formOptions]);
+$form = ActiveForm::begin(['action' => '/cabinet/tree/save', 'options' => $formOptions]);
 
 // helper function to show alert
 $showAlert = function ($type, $body = '', $hide = true) use($hideCssClass) {

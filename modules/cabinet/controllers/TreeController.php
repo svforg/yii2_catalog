@@ -13,6 +13,8 @@ use yii\filters\VerbFilter;
 use app\modules\cabinet\controllers\DefaultController;
 use app\components\ImageUploader;
 use \kartik\tree\controllers\NodeController;
+use yii\web\UploadedFile;
+
 /**
  * TreeController implements the CRUD actions for Tree model.
  */
@@ -49,8 +51,6 @@ class TreeController extends NodeController
             $tag = array_pop($tag);
             $id = $post[$tag][$keyAttr];
             $node = $treeClass::findOne($id);
-
-
             $successMsg = Yii::t('kvtree', 'Saved the {node} details successfully.', $nodeTitles);
             $errorMsg = Yii::t('kvtree', 'Error while saving the {node}. Please try again later.', $nodeTitles);
         }
@@ -80,8 +80,20 @@ class TreeController extends NodeController
             }
         }
         $imageUploader = new ImageUploader($node);
+
+
         if ($node->save()) {
             $imageUploader->resizeImageFile($node);
+            //var_dump($node);
+
+//            $node->file = UploadedFile::getInstance($node->file, 'file');
+//
+//            $dir = Yii::getAlias('@app/web/uploads/');
+//
+//            $node->image = strtotime('now') . '_' . Yii::$app->getSecurity()->generateRandomString(6) . '.' . $node->file->extension;
+//
+//            $node->file->saveAs($dir . 'images/categories/' . $node->image);
+
             // check if active status was changed
             if (!$isNewRecord && $node->activeOrig != $node->active) {
                 if ($node->active) {
