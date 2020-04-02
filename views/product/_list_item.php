@@ -7,7 +7,7 @@ $imageUrl50x50 = ImageUploader::getImageUrl50x50($model);
 
 ?>
 <div class="product" style="border: 1px solid blue;">
-    <a href="/cabinet/product/view?id=<?= $model->id ?>" style="display: block;">
+    <a href="/product/view?id=<?= $model->id ?>" style="display: block;">
         <h2><?= Html::encode($model->name) ?></h2>
         <p><?= Html::encode($model->description) ?></p>
         <img src="<?=  $imageUrl50x50 ?>" alt="<?= $model->name ?>"/>

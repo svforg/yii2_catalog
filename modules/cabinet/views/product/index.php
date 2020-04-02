@@ -2,9 +2,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use \kartik\tree\TreeView;
-use app\models\Product;
-use app\models\Tree;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
@@ -23,22 +20,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= \yii\widgets\ListView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'itemView' => '_list_item',
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-        'options' => [
-            'tag' => 'div',
-            'class' => 'row',
-            'id' => 'news-list',
-        ],
+            'id',
+            'name',
+            'image',
+            'url:url',
+            'status',
+            //'description:ntext',
+            //'feature_id',
+            //'created_at',
+            //'category_id',
 
-        'itemOptions' => [
-            'tag' => 'div',
-            'class' => 'col-lg-2 col-md-2 col-sm-6 col-md-6',
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
 
 
 </div>

@@ -43,7 +43,6 @@ class ProductController extends DefaultController
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-
     }
 
     /**

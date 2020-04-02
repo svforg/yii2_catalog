@@ -17,20 +17,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= ListView::widget([
+    <?= \yii\widgets\ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemView' => '_product',
+        'itemView' => '_list_item',
 
         'options' => [
             'tag' => 'div',
             'class' => 'row',
             'id' => 'news-list',
-        ],
-
-        'emptyText' => 'Список пуст',
-        'emptyTextOptions' => [
-            'tag' => 'div',
-            'class' => 'col-xs-12'
         ],
 
         'itemOptions' => [
