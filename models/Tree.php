@@ -7,6 +7,8 @@ use Yii;
 use yii\db\ActiveRecord;
 use app\components\ImageUploader;
 use yii\web\UploadedFile;
+use creocoder\nestedsets\NestedSetsBehavior;
+use app\models\TreeQuery;
 
 /**
  * This is the model class for table "tree".
@@ -39,6 +41,8 @@ use yii\web\UploadedFile;
 class Tree extends \kartik\tree\models\Tree
 //class Tree extends ActiveRecord
 {
+    use \kartik\tree\models\TreeTrait;
+
     public $file;
 
     /**
@@ -98,7 +102,6 @@ class Tree extends \kartik\tree\models\Tree
         ];
     }
 
-
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
@@ -110,5 +113,27 @@ class Tree extends \kartik\tree\models\Tree
 
     }
 
+    public function behaviors() {
+        return [
+            'tree' => [
+                'class' => NestedSetsBehavior::className(),
+                 'treeAttribute' => 'root',
+                 'leftAttribute' => 'lft',
+                 'rightAttribute' => 'rgt',
+                 'depthAttribute' => 'lvl',
+            ],
+        ];
+    }
 
+    public function transactions()
+    {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
+    }
+
+    public static function find()
+    {
+        return new TreeQuery(get_called_class());
+    }
 }
