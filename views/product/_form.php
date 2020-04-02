@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\models\Tree;
+use kartik\file\FileInput;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,23 +15,9 @@ use app\models\Tree;
         'options' => ['enctype' => 'multipart/form-data']
     ]); ?>
 
+    <?= $form->field($model, 'name')->textInput() ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= \kartik\tree\TreeViewInput::widget([
-        'name' => 'Product[category_id]',
-        'value' => 'true', // preselected values
-        'query' => Tree::find()->addOrderBy('root, lft'),
-        'headingOptions' => ['label' => 'Store'],
-        'rootOptions' => ['label'=>'<i class="fas fa-tree text-success"></i>'],
-        'fontAwesome' => true,
-        'asDropdown' => true,
-        'multiple' => true,
-        'options' => ['disabled' => false]
-    ]);
-    ?>
-
-    <?= $form->field($model, 'file')->widget(\kartik\file\FileInput::className(), [
+    <?=  $form->field($model, 'file')->widget(FileInput::className(), [
         'options' => ['accept' => '@images/*'],
     ]); ?>
 
@@ -38,12 +25,14 @@ use app\models\Tree;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'feature_id')->textInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 
+    <?= $form->field($model, 'category_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

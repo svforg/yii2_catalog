@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use \kartik\tree\TreeView;
 use app\models\Tree;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TreeSearch */
@@ -75,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'cacheSettings' => [
             'enableCache' => false   // defaults to true
         ],
-        //'nodeView' => '@app/modules/cabinet/views/tree/_form_tree',
+
 //        'nodeAddlViews' => [
 //            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form_upload_image',
 //        ],

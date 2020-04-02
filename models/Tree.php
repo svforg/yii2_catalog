@@ -55,7 +55,7 @@ class Tree extends \kartik\tree\models\Tree
     public function rules()
     {
         return [
-            [['lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all'], 'integer'],
+            [['root', 'lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all'], 'integer'],
             [['name'], 'required'],
             [['name'], 'string', 'max' => 60],
             [['image'], 'string', 'max' => 255],

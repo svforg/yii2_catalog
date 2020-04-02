@@ -79,11 +79,11 @@ class TreeController extends NodeController
                 }
             }
         }
-        $imageUploader = new ImageUploader($node);
+        //$imageUploader = new ImageUploader($node);
 
 
         if ($node->save()) {
-            $imageUploader->resizeImageFile($node);
+            //$imageUploader->resizeImageFile($node);
             //var_dump($node);
 
 //            $node->file = UploadedFile::getInstance($node->file, 'file');

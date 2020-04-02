@@ -14,6 +14,24 @@ use yii\web\UploadedFile;
 
 class ImageUploader extends Component
 {
+    const IMAGE_PATH = 'uploads/images/categories/';
+
+    public function getImageUrl50x50($model) {
+        return  Yii::getAlias('@web/' . self::IMAGE_PATH) . '50x50/' . $model->image;
+    }
+
+    public function getImageUrl800x($model) {
+        return  Yii::getAlias('@web/' . self::IMAGE_PATH) . '800x/' . $model->image;
+    }
+
+    public function __construct($model, array $config = [])
+    {
+        static::saveImageFile($model);
+        //self::resizeImageFile($model);
+        parent::__construct($config);
+
+    }
+
     public function resizeImageFile($model)
     {
 
@@ -61,14 +79,6 @@ class ImageUploader extends Component
 
             return $model->image = strtotime('now') . '_' . Yii::$app->getSecurity()->generateRandomString(6) . '.' . $model->file->extension;
         }
-
-    }
-
-    public function __construct($model, array $config = [])
-    {
-        self::saveImageFile($model);
-        //self::resizeImageFile($model);
-        parent::__construct($config);
 
     }
 

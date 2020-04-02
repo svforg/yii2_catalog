@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "product".
@@ -38,8 +40,11 @@ use Yii;
  *
  * @property Feature $feature
  */
-class Product extends \kartik\tree\models\Tree
+class Product extends \yii\db\ActiveRecord
 {
+    use \kartik\tree\models\TreeTrait;
+
+    public $file;
     /**
      * {@inheritdoc}
      */
@@ -55,7 +60,7 @@ class Product extends \kartik\tree\models\Tree
     {
         return [
             [['root', 'lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all', 'child_allowed', 'status', 'feature_id', 'created_at', 'category_id'], 'integer'],
-            [['lft', 'rgt', 'lvl', 'name'], 'required'],
+            [[ 'name'], 'required'],
             [['description'], 'string'],
             [['image'], 'string', 'max' => 255],
             [['file'], 'file', 'extensions' => 'png, jpg',
@@ -112,5 +117,20 @@ class Product extends \kartik\tree\models\Tree
     public function getFeature()
     {
         return $this->hasOne(Feature::className(), ['id' => 'feature_id']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at' ],
+                    // ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // если вместо метки времени UNIX используется datetime:
+                // 'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 }

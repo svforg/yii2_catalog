@@ -1,10 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-use \kartik\tree\TreeView;
-use app\models\Product;
-use app\models\Tree;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
@@ -13,19 +10,16 @@ use app\models\Tree;
 $this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
+<div class="wrapper">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= \yii\widgets\ListView::widget([
+    <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemView' => '_list_item',
+        'itemView' => '_product',
 
         'options' => [
             'tag' => 'div',
@@ -33,12 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'id' => 'news-list',
         ],
 
+        'emptyText' => 'Список пуст',
+        'emptyTextOptions' => [
+            'tag' => 'div',
+            'class' => 'col-xs-12'
+        ],
+
         'itemOptions' => [
             'tag' => 'div',
             'class' => 'col-lg-2 col-md-2 col-sm-6 col-md-6',
         ],
     ]); ?>
-
 
 
 </div>

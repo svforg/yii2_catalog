@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\cabinet\controllers;
+namespace app\controllers;
 
 use Yii;
 use app\models\Product;
@@ -9,6 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\modules\cabinet\controllers\DefaultController;
 use app\components\ImageUploader;
+use yii\data\ActiveDataProvider;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -36,14 +37,23 @@ class ProductController extends DefaultController
      */
     public function actionIndex()
     {
+
+
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Product::find()->orderBy('created_at DESC'),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+
         $searchModel = new ProductSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-
     }
 
     /**
