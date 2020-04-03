@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\bootstrap\Modal;
-use app\widgets\OrderForm\OrderForm;
+use app\widgets\OrderWidget\OrderWidget;
 
 
 /* @var $this yii\web\View */
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'toggleButton' => ['label' => 'Заказать', 'class' => 'btn btn-success'],
     ]);
 
-    echo OrderForm::widget();
+    echo OrderWidget::widget();
 
     Modal::end(); ?>
 

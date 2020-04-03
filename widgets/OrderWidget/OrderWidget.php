@@ -1,13 +1,14 @@
 <?php
 
-namespace app\widgets\OrderForm;
+namespace app\widgets\OrderWidget;
 
 use Yii;
 use yii\base\Widget;
 //use yii\bootstrap\Widget;
 use yii\helpers\Html;
+use app\models\Orders;
 
-class OrderForm extends  Widget
+class OrderWidget extends  Widget
 {
     public $message;
 
@@ -20,6 +21,12 @@ class OrderForm extends  Widget
     }
     public function run()
     {
-       return $this->render('orderform');
+        $model = new Orders();
+
+
+
+        return $this->render('order_widget', [
+            'model' => $model,
+        ]);
     }
 }
