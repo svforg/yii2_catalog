@@ -52,12 +52,9 @@ class OrdersController extends DefaultController
         $model = new Orders();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->save();
-        }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+            return $model->save();
+        }
     }
 
 
