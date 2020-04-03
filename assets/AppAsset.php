@@ -21,12 +21,21 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         //'css/site.css',
-        'css/_fonts.css',
-        'css/critical-style.css',
-        'css/style.css',
+        'css/animate.css',
+        'css/furniture-icons.min.css',
+        'css/ion-range-slider.min.css',
+        'css/linear-icons.min.css',
+        'css/magnific-popup.min.css',
+        'css/owl.carousel.min.css',
+        'css/theme.css',
     ];
     public $js = [
         //'js/scripts.min.js',
+        'js/jquery.magnific-popup.min.js',
+        'js/jquery.owl.carousel.min.js',
+        'js/jquery.ion.rangeSlider.min.js',
+        'js/jquery.isotope.pkgd.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

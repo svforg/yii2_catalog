@@ -10,7 +10,7 @@ use yii\widgets\ListView;
 $this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="wrapper">
+<div class="container">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

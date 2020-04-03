@@ -14,10 +14,11 @@ echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-right'],
     'items' => [
         ['label' => 'Home', 'url' => ['/']],
+        ['label' => 'Catalog', 'url' => ['/catalog']],
         ['label' => 'Product', 'url' => ['/product']],
         ['label' => 'contact', 'url' => ['/site/contact']],
         Yii::$app->user->isGuest ? (
-        ['label' => 'Login', 'url' => ['/site/login']]
+            ['label' => 'Login', 'url' => ['/site/login']]
         ) : (
             '<li>'
             . Html::beginForm(['/site/logout'], 'post')

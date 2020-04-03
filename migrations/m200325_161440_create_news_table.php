@@ -21,6 +21,8 @@ class m200325_161440_create_news_table extends Migration
             'text' => $this->text(),
             'created_at' => $this->integer(),
         ]);
+
+
     }
 
     /**

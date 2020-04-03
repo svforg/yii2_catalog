@@ -13,7 +13,7 @@ use app\models\Product;
 $this->title = 'Trees';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="wrapper">
+<div class="container">
 <div class="tree-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
