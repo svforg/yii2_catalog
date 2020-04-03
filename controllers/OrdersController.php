@@ -51,10 +51,15 @@ class OrdersController extends DefaultController
     {
         $model = new Orders();
 
-        if ($model->load(Yii::$app->request->post())) {
-
+        if (Yii::$app->request->isAjax ) {
+            printArr($_POST);
             return $model->save();
         }
+
+//        if ($model->load(Yii::$app->request->post())) {
+//
+//            return $model->save();
+//        }
     }
 
 
