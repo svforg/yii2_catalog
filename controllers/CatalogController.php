@@ -17,26 +17,10 @@ class CatalogController extends Controller
 {
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Tree::find()->orderBy('id DESC'),
-            'pagination' => [
-                'pageSize' => 20,
-            ],
-        ]);
-
-
         $trees = Tree::find()->roots()->all();
-
-        $treeHasChildred = Tree::findOne(['lvl' => '0']);
-        $children = $treeHasChildred->children()->all();
-
-
-        $searchModel = new TreeSearch();
-        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $children = Tree::findOne(['lvl' => '0'])->children()->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
             'trees' => $trees,
             'children' => $children,
         ]);
