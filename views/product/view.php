@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'toggleButton' => ['label' => 'Заказать', 'class' => 'btn btn-success'],
     ]);
 
-    echo OrderWidget::widget();
+    echo OrderWidget::widget(['product_id' => $model->id]);
 
     Modal::end(); ?>
 

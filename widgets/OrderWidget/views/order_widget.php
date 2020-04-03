@@ -2,7 +2,6 @@
 
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-
 ?>
 
     <?php $form = ActiveForm::begin([
@@ -22,7 +21,7 @@ use yii\helpers\Html;
 
         <?= $form->field($model, 'text')->textInput() ?>
 
-        <!--?= $form->field($model, 'product_id')->textInput() ?-->
+        <?= $form->field($model, 'product_id')->hiddenInput(['value' => $product_id])->label(''); ?>
 
         <div class="form-group">
             <?= Html::submitButton('Save', ['class' => 'btn btn-success add_order_product']) ?>
@@ -34,15 +33,9 @@ use yii\helpers\Html;
 
 $js = <<<JS
     $('.add_order_form').on("submit", function(e) {
-        
-        //e.preventDefault();
-        
-         var dataSend = new FormData(),
-            itemParent = $(this);
-        
-         dataSend.append('name', itemParent.find('input[name="Orders[name]"]').val());
-         dataSend.append('email', itemParent.find('input[name="Orders[email]"]').val());
-         
+            
+         var dataSend = $(this).serialize();
+                 
          $.ajax({
             url: "/orders/create",
             type: "POST",          
@@ -57,8 +50,9 @@ $js = <<<JS
               console.log(data);
               alert("ok");
             },
-            error: function() {
-              alert("ERROR");
+            error: function(jqXHR, exception) {
+                console.log(jqXHR);
+                alert("ERROR");
             }
          });
     });
