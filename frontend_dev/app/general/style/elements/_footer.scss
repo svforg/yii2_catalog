@@ -1,0 +1,140 @@
+/*
+    ----------------------------------
+    45. Footer
+    ----------------------------------
+*/
+footer {
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #666666;
+  background-color: black;
+}
+
+@media (max-width: 767px) {
+  footer {
+    text-align: center;
+  }
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6,
+footer .h1, footer .h2, footer .h3, footer .h4, footer .h5, footer .h6 {
+  color: #cc9600;
+}
+
+footer .form-control {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  border-bottom: 1px solid #ffbb00;
+}
+
+footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+footer ul li {
+  list-style-type: none;
+}
+
+footer a {
+  color: #666666;
+}
+
+footer a:hover {
+  color: #ffbb00;
+}
+
+footer .footer-showroom {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #222;
+}
+
+footer .footer-showroom.footer-showroom-single {
+  margin-bottom: 0;
+}
+
+footer .footer-showroom .call-us {
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  footer .footer-showroom {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  footer .footer-showroom {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 1200px) {
+  footer .footer-showroom {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: 80px;
+  }
+}
+
+footer .footer-links .form-newsletter {
+  position: relative;
+}
+
+footer .footer-links .form-newsletter .btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media print {
+  footer .footer-links {
+    display: none !important;
+  }
+}
+
+footer .footer-social {
+  padding: 10px 0;
+  text-align: center;
+}
+
+footer .footer-social li {
+  display: inline-block;
+}
+
+footer .footer-social li a {
+  padding: 0 5px;
+}
+
+@media (min-width: 992px) {
+  footer .footer-social {
+    padding: 30px 0;
+    text-align: left;
+  }
+  footer .footer-social .links {
+    text-align: right;
+  }
+}
+
+@media (max-width: 991px) {
+  footer .row > div {
+    margin-bottom: 30px;
+  }
+  footer .row > div:last-child {
+    margin-bottom: 0;
+  }
+}

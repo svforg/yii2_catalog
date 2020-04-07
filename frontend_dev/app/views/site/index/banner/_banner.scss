@@ -1,0 +1,38 @@
+/*
+    ----------------------------------
+    29. Banner
+    ----------------------------------
+*/
+.banner {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding-top: 160px;
+  padding-bottom: 160px;
+  color: white;
+  background-color: #3a3d45;
+}
+
+.banner .btn {
+  margin-top: 40px;
+}
+
+.banner.banner-smaller {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .banner.banner-smaller {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .banner.banner-smaller {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+}

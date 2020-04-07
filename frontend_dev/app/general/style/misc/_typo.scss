@@ -1,0 +1,154 @@
+body, html {
+  color: $colorGrayPrimary;
+  font-size: 13px;
+  font-weight: normal;
+  font-family: $mainFont;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  @media (min-width: 992px) {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+h1, .h1 {
+  margin:  26.66667px 0;
+  @include fluidFontSize(23px, 34px, 480px, 768px, 18px);
+  @include fluidLineHeight(32px, 48px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: 15px 0;
+  }
+}
+
+h2, .h2 {
+  margin: 26.66667px 0;
+  @include fluidFontSize(21px, 30px, 480px, 768px, 18px);
+  @include fluidLineHeight(30px, 40px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: 15px 0;
+  }
+}
+
+h3, .h3	{
+  margin: 26.66667px 0;
+  @include fluidFontSize(19px, 26px, 480px, 768px, 18px);
+  @include fluidLineHeight(24px, 32px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: 15px 0;
+  }
+}
+
+h4, .h4	{
+  margin: 26.66667px 0;
+  @include fluidFontSize(17px, 22px, 480px, 768px, 18px);
+  @include fluidLineHeight(24px, 30px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: 15px 0;
+  }
+}
+
+h5, .h5	{
+  margin: 26.66667px 0;
+  @include fluidFontSize(15px, 18px, 480px, 768px, 18px);
+  @include fluidLineHeight(24px, 35px, 480px, 768px, 26px);
+  @media ($phonesMax) {
+    margin: 15px 0;
+  }
+}
+
+h6 , .h6 {
+  margin: 26.66667px 0;
+  @include fluidFontSize(13px, 14px, 480px, 768px, 18px);
+  @include fluidLineHeight(20px, 24px, 480px, 768px, 24px);
+  @media ($phonesMax) {
+    margin: 15px 0;
+  }
+}
+
+.hero__headline {
+  margin: $step9 0 26px 0;
+  @include fluidFontSize(24px, 42px, 480px, 1280px, 18px);
+  @include fluidLineHeight(32px, 56px, 480px, 1280px, 26px);
+  @media ($phonesMax) {
+    margin: $step6 0 $step3 0;
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $secondFont;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &:first-child {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+strong {
+  font-family: $secondFont;
+  @include fluidFontSize(16px, 18px, 480px, 768px, 18px);
+  @include fluidLineHeight(20px, 24px, 480px, 768px, 24px);
+}
+small {
+  margin: $step2 0;
+  padding: 0;
+  @include fluidFontSize(13px, 14px, 480px, 1280px, 14px);
+  @include fluidLineHeight(22px, 24px, 480px, 1280px, 24px);
+}
+
+b,
+strong,
+label,
+.label {
+  font-weight: 500;
+}
+
+p {
+  margin: 14px 0;
+  padding: 0;
+  @media ($phonesMax) {
+    margin: $step1 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  color: #3a3d45;
+}
+
+a, a:focus, a:active, a:hover, a:visited {
+  position: relative;
+  color: #666666;
+  text-decoration: none;
+  transition: color $transitionDurationPrimary $transitionFunctionPrimary;
+}
+@media print {
+  a[href]:after,
+  abbr[title]:after,
+  a[href^="#"]:after {
+    content: none !important;
+  }
+}
+
+/* iPad fix */
+input, textarea, select {
+  -webkit-appearance: none;
+  /*disable shaddow nav ipad*/
+  -moz-appearance: none;
+  /*disable shaddow nav ipad*/
+  border-radius: 0;
+  /*disable border-radius ipad*/
+}

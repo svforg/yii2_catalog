@@ -1,0 +1,39 @@
+/*
+    ----------------------------------
+    6. Breadcrumbs
+    ----------------------------------
+*/
+.breadcrumb {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.breadcrumb.breadcrumb-inverted {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb.breadcrumb-inverted > li {
+  color: white;
+}
+
+.breadcrumb.breadcrumb-inverted > li > a {
+  color: white;
+}
+
+.breadcrumb > li.active,
+.breadcrumb > li.active a {
+  color: #ffbb00;
+}
+
+.breadcrumb > li a.active {
+  color: #ffbb00;
+}
+
+@media (max-width: 767px) {
+  .breadcrumb {
+    overflow: auto;
+  }
+}

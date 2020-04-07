@@ -1,0 +1,19 @@
+$topBarHeight: 40px;
+$headerHeight: 				88px;
+$headerHeightMobile:        62px;
+$containerWidth: 			1280px;
+$paddingWrapperDesktop:		0 60px;
+$paddingWrapperLaptops:		0 20px;
+$paddingWrapperMobile:		0 12px;
+
+//модульные шаги из гайдлайна
+$stepMin: 8px;
+$step1: $stepMin;       //8px
+$step2: $stepMin*2;     //16px
+$step3: $stepMin*3;     //24px
+$step4: $stepMin*4;     //32px
+$step6: $stepMin*6;     //48px
+$step9: $stepMin*9;     //72px
+$step12: $stepMin*12;   //96px
+$step16: $stepMin*16;   //128px
+$stepBlock16 : 122px;

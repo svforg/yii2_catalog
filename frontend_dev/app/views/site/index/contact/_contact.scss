@@ -1,0 +1,75 @@
+/*
+    ----------------------------------
+    35. Contact
+    ----------------------------------
+*/
+.contact {
+  background-color: #eeeeee;
+  padding: 0 0 80px 0;
+}
+
+.contact.contact-single {
+  background-color: #3a3d45;
+}
+
+.contact.contact-single.banner {
+  padding-bottom: 0;
+}
+
+.contact #map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
+}
+
+.contact .contact-block {
+  margin-top: -80px;
+}
+
+.contact .contact-block .banner {
+  padding: 80px 40px;
+}
+
+.contact .contact-block .contact-info {
+  background-color: white;
+  padding-bottom: 40px;
+}
+
+.contact .contact-block .contact-info figure {
+  padding: 15px;
+}
+
+.contact .contact-block .contact-info figure figcaption > strong {
+  display: block;
+  padding: 7.5px 0;
+}
+
+.contact .contact-block .contact-info figure figcaption > span {
+  font-size: 90%;
+}
+
+.contact .contact-block .contact-info figure .icon {
+  font-size: 50px;
+  color: #ffbb00;
+}
+
+.contact .contact-block .contact-form {
+  display: none;
+  margin-top: 50px;
+}
+
+.contact .contact-block .contact-form .form-control {
+  border-color: transparent;
+}
+
+/*
+    ----------------------------------
+    36. Map Info window
+    ----------------------------------
+*/
+.map-info-window .fa {
+  width: 20px;
+  text-align: center;
+  margin-right: 3px;
+  display: inline-block;
+}

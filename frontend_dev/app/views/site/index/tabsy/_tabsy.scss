@@ -1,0 +1,214 @@
+/*
+    ----------------------------------
+    38. Tabsy wrapper
+    ----------------------------------
+*/
+.tabsy-wrapper.tabsy-wrapper-clean {
+  padding: 0;
+}
+
+.tabsy-wrapper.tabsy-wrapper-frontpage {
+  margin-top: -40px;
+  padding: 0;
+}
+
+.tabsy-wrapper.tabsy-wrapper-frontpage .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tabsy-wrapper.tabsy-wrapper-frontpage .tabsy {
+  box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 992px) {
+  .tabsy-wrapper.tabsy-wrapper-frontpage {
+    margin-top: -100px;
+  }
+}
+
+@media (min-width: 1480px) {
+  .tabsy-wrapper.tabsy-wrapper-frontpage .container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 767px) {
+  .tabsy-wrapper.tabsy-wrapper-frontpage {
+    margin-top: -62px;
+  }
+}
+
+.tabsy-wrapper .tabsy {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.tabsy-wrapper .tabsy .tabsy-images, .tabsy-wrapper .tabsy .tabsy-images > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.tabsy-wrapper .tabsy .tabsy-images > div {
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.tabsy-wrapper .tabsy .tabsy-images > div.current {
+  opacity: 1;
+}
+
+.tabsy-wrapper .tabsy .tabsy-images img {
+  display: none;
+}
+
+.tabsy-wrapper .tabsy .tabsy-links .row {
+  margin: 0;
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure {
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  min-height: 150px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure + figure {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure:after {
+  font: normal normal normal 24px/30px LinearIcons;
+  content: "\e876";
+  -webkit-font-smoothing: antialiased;
+  display: block;
+  position: absolute;
+  text-align: right;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure a.link {
+  background-color: transparent;
+  font-size: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 88;
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure figcaption {
+  margin: 20px;
+  overflow: hidden;
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure figcaption .date {
+  font-size: 75%;
+  display: block;
+  color: #ffbb00;
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure figcaption .title {
+  display: block;
+  margin-top: 5px;
+  text-transform: none;
+  color: white;
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure figcaption .desc {
+  display: none;
+  color: white;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -moz-transform: translate3d(0, 100%, 0);
+  -ms-transform: translate3d(0, 100%, 0);
+  -o-transform: translate3d(0, 100%, 0);
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+}
+
+@media (min-width: 768px) {
+  .tabsy-wrapper .tabsy .tabsy-links figure figcaption .desc {
+    display: block;
+  }
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure.current {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure.current a.link {
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure.current figcaption .desc {
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.tabsy-wrapper .tabsy .tabsy-links figure.current:after {
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -moz-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+@media (min-width: 768px) {
+  .tabsy-wrapper .tabsy .tabsy-links figure {
+    min-height: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tabsy-wrapper .wrapper-more {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .tabsy-wrapper .wrapper-more {
+    margin-top: 35px;
+  }
+}
