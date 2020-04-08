@@ -52,15 +52,16 @@ $config = [
             'theme' => [
                 'pathMap' => [
                     //AdminLTE
-                    '@app/cabinet/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app',
+                    '@app/cabinet/view' => '@vendor/dmstr/yii2-adminlte-asset/example-view/yiisoft/yii2-app',
                     //YII2-user
-                    //'@dektrium/user/views' => '@app/views/user'
+                    //'@dektrium/user/view' => '@app/view/user'
                 ],
             ],
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'VoUraILnoEVj4EKYUVjN7YsKfwfW15TV',
+            'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -93,6 +94,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller:\w+>/key/<key:[\w+-]*\w+>/?'=>'<controller>/view'
             ],
         ],
     ],

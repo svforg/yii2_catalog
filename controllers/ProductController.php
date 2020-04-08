@@ -3,12 +3,12 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Tree;
 use app\models\Product;
 use app\models\ProductSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\modules\cabinet\controllers\DefaultController;
-use app\components\ImageUploader;
 use yii\data\ActiveDataProvider;
 
 /**
@@ -31,118 +31,38 @@ class ProductController extends DefaultController
         ];
     }
 
-    /**
-     * Lists all Product models.
-     * @return mixed
-     */
     public function actionIndex()
     {
-
-
+        $trees = Tree::find()->roots()->all();
+        $children = Tree::findOne(['lvl' => '0'])->children()->all();
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Product::find()->orderBy('created_at DESC'),
+            'query' => Product::find()->with('seo')->orderBy('created_at DESC'),
             'pagination' => [
                 'pageSize' => 20,
             ],
         ]);
 
         $searchModel = new ProductSearch();
-        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'trees' => $trees,
+            'children' => $children,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
-    /**
-     * Displays a single Product model.
-     * @param string $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
+    public function actionView($key = null)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($key = null),
         ]);
     }
 
-    /**
-     * Creates a new Product model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Product();
-
-        if( $model->load(Yii::$app->request->post())  && $model->validate() )
-        {
-            $imageUploader = new ImageUploader($model);
-            $model->save();
-            $imageUploader->resizeImageFile($model);
-
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Updates an existing Product model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if( $model->load(Yii::$app->request->post())  && $model->validate() )
-        {
-            $imageUploader = new ImageUploader($model);
-            $model->save();
-            $imageUploader->resizeImageFile($model);
-
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Deletes an existing Product model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        ImageUploader::deleteImageFile($this->findModel($id));
-
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Product model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return Product the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
-        if (($model = Product::findOne($id)) !== null) {
+        if (($model = Product::find()->where(['url' => $id])->one()) !== null) {
             return $model;
         }
 

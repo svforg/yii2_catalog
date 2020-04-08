@@ -16,6 +16,13 @@ class ImageUploader extends Component
 {
     const IMAGE_PATH = 'uploads/images/categories/';
 
+    public function __construct($model, array $config = [])
+    {
+        static::saveImageFile($model);
+        parent::__construct($config);
+
+    }
+
     public function getImageUrl50x50($model) {
         return  Yii::getAlias('@web/' . self::IMAGE_PATH) . '50x50/' . $model->image;
     }
@@ -24,34 +31,29 @@ class ImageUploader extends Component
         return  Yii::getAlias('@web/' . self::IMAGE_PATH) . '800x/' . $model->image;
     }
 
-    public function __construct($model, array $config = [])
-    {
-        static::saveImageFile($model);
-        //self::resizeImageFile($model);
-        parent::__construct($config);
-
-    }
-
     public function resizeImageFile($model)
     {
 
         $dir = Yii::getAlias('@app/web/uploads/');
-        $model->file->saveAs($dir . 'images/categories/' . $model->image);
+        if ($model->file)  {
+            $model->file->saveAs($dir . 'images/categories/' . $model->image);
+
 // загружаем изображение для resize 50x50s
-        $imageFile = Yii::$app->image->load($dir  . 'images/categories/' . $model->image);
+            $imageFile = Yii::$app->image->load($dir  . 'images/categories/' . $model->image);
 
 // При resize ставится черный цвет по умолчанию
-        $imageFile->background('#fff', 0);
-        $imageFile->resize('50', '50', Image::INVERSE);
-        $imageFile->crop('50', '50');
-        $imageFile->save($dir . 'images/categories/50x50/' . $model->image, 90);
+            $imageFile->background('#fff', 0);
+            $imageFile->resize('50', '50', Image::INVERSE);
+            $imageFile->crop('50', '50');
+            $imageFile->save($dir . 'images/categories/50x50/' . $model->image, 90);
 
 // загружаем изображение для resize 800x
-        $imageFile = Yii::$app->image->load($dir . 'images/categories/' . $model->image);
+            $imageFile = Yii::$app->image->load($dir . 'images/categories/' . $model->image);
 // При resize ставится черный цвет по умолчанию
-        $imageFile->background('#fff', 0);
-        $imageFile->resize('800', null, Image::INVERSE);
-        $imageFile->save($dir . 'images/categories/800x/' . $model->image, 90);
+            $imageFile->background('#fff', 0);
+            $imageFile->resize('800', null, Image::INVERSE);
+            $imageFile->save($dir . 'images/categories/800x/' . $model->image, 90);
+        }
     }
 
     public function saveImageFile($model)
@@ -84,19 +86,22 @@ class ImageUploader extends Component
 
     public function deleteImageFile($model)
     {
-        $dir = Yii::getAlias('@app/web/uploads/');
+        if ($model->image)  {
+            $dir = Yii::getAlias('@app/web/uploads/');
 
-        if ( file_exists($dir.'images/categories/'.$model->image ) ) {
+            if ( file_exists($dir.'images/categories/'.$model->image ) ) {
 
-            unlink($dir.'images/categories/'.$model->image );
+                unlink($dir.'images/categories/'.$model->image );
+            }
+            if ( file_exists($dir.'images/categories/50x50/'.$model->image ) ) {
+
+                unlink($dir.'images/categories/50x50/'.$model->image );
+            }
+            if ( file_exists($dir.'images/categories/800x/'.$model->image ) ) {
+
+                unlink($dir.'images/categories/800x/'.$model->image );
+            }
         }
-        if ( file_exists($dir.'images/categories/50x50/'.$model->image ) ) {
 
-            unlink($dir.'images/categories/50x50/'.$model->image );
-        }
-        if ( file_exists($dir.'images/categories/800x/'.$model->image ) ) {
-
-            unlink($dir.'images/categories/800x/'.$model->image );
-        }
     }
 }

@@ -60,4 +60,10 @@ class News extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
         ];
     }
+
+
+//    public function getSeo()
+//    {
+//        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
+//    }
 }

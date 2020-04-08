@@ -50,4 +50,10 @@ class Contact extends \yii\db\ActiveRecord
             'map_url' => 'Map Url',
         ];
     }
+
+
+//    public function getSeo()
+//    {
+//        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
+//    }
 }

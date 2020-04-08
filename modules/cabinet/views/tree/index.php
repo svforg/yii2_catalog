@@ -15,8 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tree-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Create Tree', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -78,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
 
 //        'nodeAddlViews' => [
-//            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/views/tree/_form_upload_image',
+//            \kartik\tree\Module::VIEW_PART_2 => '@app/modules/cabinet/view/tree/_form_upload_image',
 //        ],
 
 //        'nodeActions' => [

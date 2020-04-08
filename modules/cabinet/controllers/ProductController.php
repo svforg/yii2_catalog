@@ -2,6 +2,8 @@
 
 namespace app\modules\cabinet\controllers;
 
+use app\models\Feature;
+use app\models\Seo;
 use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
@@ -36,6 +38,9 @@ class ProductController extends DefaultController
      */
     public function actionIndex()
     {
+
+
+
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -67,10 +72,21 @@ class ProductController extends DefaultController
     {
         $model = new Product();
 
+        $modelSeo = new Seo();
+
+        $modelSeo->seo_title = $model->seo_title;
+        $modelSeo->seo_descr = $model->seo_descr;
+        $modelSeo->seo_slug = $model->seo_slug;
+
         if( $model->load(Yii::$app->request->post())  && $model->validate() )
         {
             $imageUploader = new ImageUploader($model);
             $model->save();
+
+            if ( $modelSeo->validate() ) {
+                $modelSeo->save();
+            }
+
             $imageUploader->resizeImageFile($model);
 
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,8 +108,10 @@ class ProductController extends DefaultController
     {
         $model = $this->findModel($id);
 
-        if( $model->load(Yii::$app->request->post())  && $model->validate() )
+        if( $model->load(Yii::$app->request->post()) )
         {
+            ImageUploader::deleteImageFile($this->findModel($id));
+
             $imageUploader = new ImageUploader($model);
             $model->save();
             $imageUploader->resizeImageFile($model);

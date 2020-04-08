@@ -136,4 +136,9 @@ class Tree extends \kartik\tree\models\Tree
     {
         return new TreeQuery(get_called_class());
     }
+//
+//    public function getSeo()
+//    {
+//        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
+//    }
 }

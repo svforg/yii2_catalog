@@ -8,32 +8,20 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <p>Администратор</p>
             </div>
         </div>
 
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-        </form>
-        <!-- /.search form -->
+
 
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Каталог товаров', 'icon' => 'dashboard', 'url' => ['/cabinet/product']],
-                    ['label' => 'Категории товаров', 'icon' => 'dashboard', 'url' => ['/cabinet/tree']],
-                    ['label' => 'Новости', 'icon' => 'dashboard', 'url' => ['/cabinet/news']],
-                    ['label' => 'Контакты', 'icon' => 'dashboard', 'url' => ['/cabinet/contact']],
+                    ['label' => 'Категории', 'icon' => 'folder', 'url' => ['/cabinet/tree']],
+                    ['label' => 'Товары', 'icon' => 'file', 'url' => ['/cabinet/product']],
+                    ['label' => 'Новости', 'icon' => 'newspaper-o', 'url' => ['/cabinet/news']],
+                    ['label' => 'Контакты', 'icon' => 'map-marker', 'url' => ['/cabinet/contact']],
                 ],
             ]
         ) ?>

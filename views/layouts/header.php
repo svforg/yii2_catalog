@@ -1,35 +1,48 @@
-
 <?php
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\widgets\Menu;
+use \yii\bootstrap\NavBar;
 
 NavBar::begin([
-    'brandLabel' => Yii::$app->name,
-    'brandUrl' => Yii::$app->homeUrl,
     'options' => [
-        'class' => 'navbar-inverse navbar-fixed-top',
+        'class' => 'navbar-fixed',
     ],
 ]);
-echo Nav::widget([
-    'options' => ['class' => 'navbar-nav navbar-right'],
-    'items' => [
-        ['label' => 'Home', 'url' => ['/']],
-        ['label' => 'Catalog', 'url' => ['/catalog']],
-        ['label' => 'Product', 'url' => ['/product']],
-        ['label' => 'contact', 'url' => ['/site/contact']],
-        Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/site/login']]
-        ) : (
-            '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>'
-        )
-    ],
-]);
+
+    echo "<div class=\"navigation navigation-main\">
+    
+                        <!-- Setup your logo here-->
+        <a href=\"/\" class=\"logo\"><img src=\"assets/images/logo.png\" alt=\"\" /></a>
+        
+        <!-- Mobile toggle menu -->
+        <a href=\"#\" class=\"open-menu\"><i class=\"icon icon-menu\"></i></a>
+        
+        <!-- Convertible menu (mobile/desktop)-->
+        <div class=\"floating-menu\">";
+
+            echo Menu::widget([
+                'items' => [
+                    ['label' => 'Главная', 'url' => ['/'], 'template'=> '<a href="{url}" itemprop="url">{label}</a>',],
+                    ['label' => 'Каталог', 'url' => ['/catalog'],  'template'=> '<a href="{url}" itemprop="url">{label}</a>',],
+                    ['label' => 'Новости', 'url' => ['/news'],  'template'=> '<a href="{url}" itemprop="url">{label}</a>',],
+                    ['label' => 'Контакты', 'url' => ['site/contacts'],  'template'=> '<a href="{url}" itemprop="url">{label}</a>',],
+                ],
+                'options' => [
+                    'id' => 'navid',
+                    'class' => '',
+                    'style' => '',
+                    'itemscope' => '',
+                    'itemtype' => 'http://www.schema.org/SiteNavigationElement',
+                ],
+                'itemOptions' => [
+                    'class' => '',
+                    'style' => 'font-size = 12px;',
+                    'itemprop' => 'name',
+                ],
+                'activeCssClass'=>'active',
+            ]);
+
+        echo "</div>";
+    echo "</div>";
+
 NavBar::end();
 ?>

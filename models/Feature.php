@@ -10,10 +10,12 @@ use Yii;
  * @property int $id
  * @property string|null $text
  *
- * @property Product[] $products
+ * @property Product[] $blog
  */
 class Feature extends \yii\db\ActiveRecord
 {
+    public $feature;
+
     /**
      * {@inheritdoc}
      */

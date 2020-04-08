@@ -3,8 +3,11 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use app\models\Seo;
+use app\models\Feature;
 
 /**
  * This is the model class for table "product".
@@ -25,6 +28,11 @@ class Product extends ActiveRecord
 {
     public $file;
 
+    public $seo_title;
+    public $seo_descr;
+    public $seo_slug;
+    public $feature;
+
     use \kartik\tree\models\TreeTrait;
 
     /**
@@ -43,9 +51,10 @@ class Product extends ActiveRecord
         return [
             [['name'], 'required'],
             [['status', 'feature_id', 'created_at', 'category_id'], 'integer'],
-            [['description'], 'string'],
+            [['description', 'feature'], 'string'],
             [['name'], 'string', 'max' => 60],
-            [['image', 'url'], 'string', 'max' => 255],
+            [['image', 'url', 'seo_slug', 'seo_title'], 'string', 'max' => 255],
+            [['seo_descr'], 'string', 'max' => 320],
             [['file'], 'file', 'extensions' => 'png, jpg',
                 'skipOnEmpty' => true],
             [['feature_id'], 'exist', 'skipOnError' => true, 'targetClass' => Feature::className(), 'targetAttribute' => ['feature_id' => 'id']],
@@ -79,6 +88,16 @@ class Product extends ActiveRecord
     public function getFeature()
     {
         return $this->hasOne(Feature::className(), ['id' => 'feature_id']);
+    }
+
+    /**
+     * Gets query for [[Seo]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSeo()
+    {
+        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
     }
 
     public function behaviors()

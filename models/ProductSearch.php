@@ -17,7 +17,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'status', 'feature_id', 'created_at', 'category_id'], 'integer'],
+            [['id', 'status', 'feature_id', 'created_at', 'category_id', 'seo_id'], 'integer'],
             [['name', 'image', 'url', 'description'], 'safe'],
         ];
     }
@@ -41,12 +41,18 @@ class ProductSearch extends Product
     public function search($params)
     {
         $query = Product::find();
+        $query->with('seo')->all();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['name'] = [
+//            'asc' => [Seo::tableName().'.slug' => SORT_ASC],
+//            'desc' => [Seo::tableName().'.slug' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -63,13 +69,23 @@ class ProductSearch extends Product
             'feature_id' => $this->feature_id,
             'created_at' => $this->created_at,
             'category_id' => $this->category_id,
+            'seo_id' => $this->seo_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'image', $this->image])
             ->andFilterWhere(['like', 'url', $this->url])
+            //->andFilterWhere(['like', Seo::tableName().'.slug', $this->slug])
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
+    }
+
+    public function seos()
+    {
+        return [
+            [['id', 'seo_id'], 'integer'],
+            [['name'], 'string'],
+        ];
     }
 }

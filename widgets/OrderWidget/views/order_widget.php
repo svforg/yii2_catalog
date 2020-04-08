@@ -33,26 +33,20 @@ use yii\helpers\Html;
 
 $js = <<<JS
     $('.add_order_form').on("submit", function(e) {
-            
+
          var dataSend = $(this).serialize();
-                 
+
          $.ajax({
             url: "/orders/create",
-            type: "POST",          
+            type: "POST",
             processData: false,
-            contentType: false,
-            dataType: "json",            
-            data: dataSend,            
-            beforeSend: function() {
-              
+            data: dataSend,
+            beforeSend: function() {              
             },
             success: function(data) {
-              console.log(data);
-              alert("ok");
+              alert(data);
             },
             error: function(jqXHR, exception) {
-                console.log(jqXHR);
-                alert("ERROR");
             }
          });
     });

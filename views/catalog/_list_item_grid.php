@@ -11,7 +11,7 @@ $imageUrl800x = ImageUploader::getImageUrl800x($model);
 <article>
     <div class="info">
         <span>
-            <a href="<?= \yii\helpers\Url::to(['product/view/', 'id' => $model->url]); ?>" class="mfp-open" data-title="Quick wiew">
+            <a href="<?= \yii\helpers\Url::to(['product/view/' . $model->url ]); ?>" class="mfp-open" data-title="Quick wiew">
                 <i class="icon icon-eye"></i>
             </a>
         </span>

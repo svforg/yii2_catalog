@@ -30,6 +30,12 @@ use app\models\Tree;
     ]);
     ?>
 
+    <?= $form->field($model, 'seo_title')->textInput() ?>
+    <?= $form->field($model, 'seo_descr')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'seo_slug')->textInput() ?>
+
+    <?= $form->field($model, 'feature')->textarea(['rows' => 6]) ?>
+
     <?= $form->field($model, 'file')->widget(\kartik\file\FileInput::className(), [
         'options' => ['accept' => '@images/*'],
     ]); ?>
@@ -40,7 +46,6 @@ use app\models\Tree;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'feature_id')->textInput() ?>
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 

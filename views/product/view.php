@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'feature_id',
             'created_at',
             'category_id',
+            'seo_id',
         ],
     ]) ?>
     <?php Modal::begin([

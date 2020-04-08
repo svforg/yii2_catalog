@@ -3,7 +3,8 @@
 namespace app\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 /**
  * This is the model class for table "orders".
  *
@@ -16,7 +17,7 @@ use Yii;
  * @property int|null $created_at
  * @property int|null $product_id
  */
-class Orders extends \yii\db\ActiveRecord
+class Orders extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -57,4 +58,25 @@ class Orders extends \yii\db\ActiveRecord
             'product_id' => 'Product ID',
         ];
     }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at' ],
+                    // ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // если вместо метки времени UNIX используется datetime:
+                // 'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
+    }
+
 }

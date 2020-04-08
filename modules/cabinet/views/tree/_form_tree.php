@@ -238,7 +238,7 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
 
     <?php
     /**
-     * SECTION 6: Additional views part 1 - before all form attributes.
+     * SECTION 6: Additional view part 1 - before all form attributes.
      */
     ?>
     <?php
@@ -298,7 +298,7 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
 
     <?php
     /**
-     * SECTION 8: Additional views part 2 - before admin zone.
+     * SECTION 8: Additional view part 2 - before admin zone.
      */
     ?>
     <?= $renderContent(Module::VIEW_PART_2) ?>
@@ -313,7 +313,7 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
 
         <?php
         /**
-         * SECTION 10: Additional views part 3 - within admin zone BEFORE mandatory attributes.
+         * SECTION 10: Additional view part 3 - within admin zone BEFORE mandatory attributes.
          */
         ?>
         <?= $renderContent(Module::VIEW_PART_3) ?>
@@ -347,14 +347,14 @@ $icons = is_array($iconsList) ? array_values($iconsList) : $iconsList;
 
         <?php
         /**
-         * SECTION 12: Additional views part 4 - within admin zone AFTER mandatory attributes.
+         * SECTION 12: Additional view part 4 - within admin zone AFTER mandatory attributes.
          */
         ?>
         <?= $renderContent(Module::VIEW_PART_4) ?>
     <?php endif; ?>
     <?php
     /**
-     * SECTION 13: Additional views part 5 accessible by all users after admin zone.
+     * SECTION 13: Additional view part 5 accessible by all users after admin zone.
      */
     ?>
     <?= $renderContent(Module::VIEW_PART_5) ?>
