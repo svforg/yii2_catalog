@@ -2,7 +2,11 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\Product;
+use app\models\Post;
+use app\models\PostHelper;
+use \yii\helpers\Url;
+use \app\components\ImageUploader;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -25,17 +29,33 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'name',
-            'image',
-            'url:url',
-            'status',
-            //'description:ntext',
-            //'feature_id',
-            //'created_at',
-            //'category_id',
-
+            [
+                'attribute' => 'image',
+                'label' => 'Картинка',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::img(ImageUploader::getImageUrl50x50($model),[
+                        'style' => 'max-width:50px;width:100%;object-fit:cover'
+                    ]);
+                },
+            ],
+            [
+                'attribute' => 'status',
+                'filter' => PostHelper::statusList(),
+                'value' => function ($model) {
+                    return PostHelper::statusLabel($model->status);
+                },
+                'format' => 'raw',
+//                'value' => 'statusName',
+//                'filter' => Product::getStatusList(),
+            ],
+            [
+                'attribute' => 'category_id',
+                'value' => 'treeName',
+                'filter' => app\models\Tree::getTreesList(),
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

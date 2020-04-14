@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use app\models\Product;
+use app\models\Seo;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
@@ -32,7 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'image',
-            'url:url',
+            [
+                'attribute' => 'url',
+                'value' => Seo::getSeoSlug($model, $event),
+            ],
             'status',
             'description:ntext',
             'feature_id',

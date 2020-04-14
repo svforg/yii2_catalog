@@ -53,19 +53,20 @@ class ProductController extends DefaultController
         ]);
     }
 
-    public function actionView($key = null)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($key = null),
+            'model' => $this->findModel($id),
         ]);
     }
 
     protected function findModel($id)
     {
-        if (($model = Product::find()->where(['url' => $id])->one()) !== null) {
+        if (($model = Product::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

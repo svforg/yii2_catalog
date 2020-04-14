@@ -70,30 +70,27 @@ class ProductController extends DefaultController
      */
     public function actionCreate()
     {
-        $model = new Product();
-
+        $modelProduct = new Product();
         $modelSeo = new Seo();
 
-        $modelSeo->seo_title = $model->seo_title;
-        $modelSeo->seo_descr = $model->seo_descr;
-        $modelSeo->seo_slug = $model->seo_slug;
-
-        if( $model->load(Yii::$app->request->post())  && $model->validate() )
+        if( $modelProduct->load(Yii::$app->request->post())  && $modelProduct->validate() )
         {
-            $imageUploader = new ImageUploader($model);
-            $model->save();
+            $imageUploader = new ImageUploader($modelProduct);
+            $modelProduct->save();
+            $imageUploader->resizeImageFile($modelProduct);
 
-            if ( $modelSeo->validate() ) {
-                $modelSeo->save();
+            if ( $modelSeo->load(Yii::$app->request->post()) && $modelSeo->validate() )
+            {
+                $modelSeo->saveData($modelProduct);
             }
 
-            $imageUploader->resizeImageFile($model);
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $modelProduct->id]);
         }
 
         return $this->render('create', [
-            'model' => $model,
+            'modelProduct' => $modelProduct,
+            'modelSeo' => $modelSeo
         ]);
     }
 

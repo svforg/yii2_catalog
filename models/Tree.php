@@ -6,6 +6,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use app\components\ImageUploader;
+use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 use creocoder\nestedsets\NestedSetsBehavior;
 use app\models\TreeQuery;
@@ -136,9 +137,16 @@ class Tree extends \kartik\tree\models\Tree
     {
         return new TreeQuery(get_called_class());
     }
-//
+
 //    public function getSeo()
 //    {
 //        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
 //    }
+
+    public static function getTreesList()
+    {
+
+
+        return ArrayHelper::map(self::find()->asArray()->all(), 'id', 'name');
+    }
 }

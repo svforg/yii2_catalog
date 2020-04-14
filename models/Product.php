@@ -2,12 +2,16 @@
 
 namespace app\models;
 
+use function foo\func;
 use Yii;
-use yii\behaviors\SluggableBehavior;
+
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use app\models\Seo;
+use app\models\Tree;
 use app\models\Feature;
+use yii\helpers\Html;
+
 
 /**
  * This is the model class for table "product".
@@ -28,11 +32,6 @@ class Product extends ActiveRecord
 {
     public $file;
 
-    public $seo_title;
-    public $seo_descr;
-    public $seo_slug;
-    public $feature;
-
     use \kartik\tree\models\TreeTrait;
 
     /**
@@ -51,10 +50,9 @@ class Product extends ActiveRecord
         return [
             [['name'], 'required'],
             [['status', 'feature_id', 'created_at', 'category_id'], 'integer'],
-            [['description', 'feature'], 'string'],
+            [['description'], 'string'],
             [['name'], 'string', 'max' => 60],
-            [['image', 'url', 'seo_slug', 'seo_title'], 'string', 'max' => 255],
-            [['seo_descr'], 'string', 'max' => 320],
+            [['image', 'url'], 'string', 'max' => 255],
             [['file'], 'file', 'extensions' => 'png, jpg',
                 'skipOnEmpty' => true],
             [['feature_id'], 'exist', 'skipOnError' => true, 'targetClass' => Feature::className(), 'targetAttribute' => ['feature_id' => 'id']],
@@ -97,7 +95,31 @@ class Product extends ActiveRecord
      */
     public function getSeo()
     {
-        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
+        return $this->hasOne(Seo::className(), ['entity_id' => 'id' ])->andWhere(['entity_type' => Product::className()]);
+    }
+
+    public function getTree()
+    {
+        return $this->hasOne(Tree::className(), ['id' => 'category_id']);
+    }
+
+    public function getTreeName()
+    {
+        return (isset($this->tree) ? $this->tree->name: 'Не задано' );
+    }
+
+    public static function getStatusList()
+    {
+        return [
+            Html::a('<i class="fa fa-toggle-off" aria-hidden="true"></i>'),
+            Html::a('<i class="fa fa-toggle-on" aria-hidden="true"></i>'),
+        ];
+    }
+
+    public function getStatusName()
+    {
+        $list = $this->getStatusList();
+        return $list[$this->status];
     }
 
     public function behaviors()
@@ -109,9 +131,9 @@ class Product extends ActiveRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at' ],
                     // ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
-                // если вместо метки времени UNIX используется datetime:
-                // 'value' => new Expression('NOW()'),
             ],
+
         ];
     }
+
 }
