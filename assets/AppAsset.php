@@ -32,12 +32,14 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
-        //'js/scripts.min.js',
+
         'js/jquery.magnific-popup.min.js',
-        'js/jquery.owl.carousel.min.js',
+        //'js/jquery.owl.carousel.min.js',
         'js/jquery.ion.rangeSlider.min.js',
         'js/jquery.isotope.pkgd.js',
+        'js/scripts.min.js',
         'js/main.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

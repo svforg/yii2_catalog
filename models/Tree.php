@@ -43,7 +43,7 @@ class Tree extends \kartik\tree\models\Tree
 //class Tree extends ActiveRecord
 {
     use \kartik\tree\models\TreeTrait;
-
+    const IMAGE_PATH = 'categories';
     public $file;
 
     /**

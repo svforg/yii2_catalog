@@ -1,0 +1,177 @@
+.spoilers {
+
+  &__headline {
+    margin-bottom: 32px!important;
+  }
+
+  .button-spoiler {
+    position: relative;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+
+  .list-spoilers {
+    $self: &;
+    padding-left: 40px;
+
+    &__item {
+      margin-bottom: 32px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__desc {
+      display: none;
+      padding-left: 6px;
+    }
+
+    &__button {
+      position: relative;
+      text-align: left;
+
+      &_active {
+
+        .list-spoilers__button-icon {
+          animation: plus-animation-reverse .5s ease-out forwards;
+          //transform: rotate(45deg);
+        }
+      }
+
+      &-icon {
+        position: absolute;
+        top: -2px;
+        left: -40px;
+        width: 26px;
+        height: 26px;
+        //background: $backgroundSpoilerOpen;
+        background: $colorLightPrimary;
+        border: 1px solid $colorBluePrimary;
+        border-radius: 50%;
+        animation: plus-animation .5s ease-out forwards;
+        content: '';
+
+
+        &::before,
+        &::after {
+          position: absolute;
+          top: 12px;
+          left: 5px;
+          width: 14px;
+          height: 1px;
+          //background: $backgroundSpoilerOpenLines;
+          background: $colorBluePrimary;
+          transform: rotate(90deg);
+          transition: all $transitionDurationPrimary $transitionFunctionPrimary;
+          content: '';
+        }
+
+        &::after {
+          transform: rotate(0deg);
+        }
+      }
+
+      &-headings {
+        padding: 0;
+        font-weight: 600;
+        font-family: $mainFont;
+        font-size: 18px;
+        text-align: left;
+      }
+
+      &:hover .list-spoilers__button-icon {
+        background: $colorBlueSecondary;
+        border-color: $colorBlueSecondary;
+
+        &::before,
+        &::after {
+          background: $colorLightPrimary;
+        }
+      }
+    }
+  }
+  @keyframes plus-animation {
+    0% {
+      transform: rotate(45deg);
+    }
+    20% {
+      transform: rotate(-15deg);
+    }
+    55% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-3deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+  @keyframes plus-animation-reverse {
+    0% {
+      transform: rotate(0);
+    }
+    20% {
+      transform: rotate(60deg);
+    }
+    55% {
+      transform: rotate(35deg);
+    }
+    80% {
+      transform: rotate(48deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+
+  }
+
+  .sidebar {
+    width: 100%;
+    @media ($largeTabletsMax) {
+      padding: 0 0 48px 0;
+    }
+    &__desc {
+      @media ($phonesMax) {
+        padding-top: 0;
+      }
+    }
+
+    .form {
+      &__label {
+        display: block;
+        margin-bottom: 16px;
+        cursor: pointer;
+      }
+
+      &__attachment {
+        width: 50px;
+        padding-top: 16px;
+      }
+
+      &__field {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+
+      &__button {
+        width: 100%;
+      }
+
+      &__headline {
+        @media ($phonesMax) {
+          padding: 24px 0 0 0;
+        }
+      }
+    }
+  }
+  .mb-sm-7 {
+    @media ($smallTabletsMax) {
+      margin-bottom: 32px;
+    }
+  }
+}

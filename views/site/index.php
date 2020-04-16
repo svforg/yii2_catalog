@@ -1,251 +1,33 @@
 <main class="page-content">
-
-<!-- ========================  Header content ======================== -->
-<section class="header-content">
-
-    <div class="owl-slider">
-
-        <!-- === slide item === -->
-
-        <div class="item" style="background-image:url(assets/images/tipologia-di-pompe-1140x380-1.png)">
-            <div class="box">
-                <div class="container">
-                    <h2 class="title animated h1" data-animation="fadeInDown">ПНЕВМАТИЧЕСКИЕ МЕМБРАННЫЕ НАСОСЫ BOXER</h2>
-                    <div class="animated" data-animation="fadeInUp">
-                        Гарантия -  3 года!
-                    </div>
-                    <div class="animated" data-animation="fadeInUp">
-                        <a href="https://themeforest.net/item/mobel-furniture-website-template/20382155" target="_blank" class="btn btn-main" ><i class="icon icon-cart"></i>Подробнее</a>
-                    </div>
-                </div>
-            </div>
+    <section class="main-page-about">
+        <div class="main-page-about__video-inner">
+            <picture class="main-page-about__video-in">
+                <source srcset="/assets/images/tipologia-di-pompe-1140x380-1.png">
+                <img itemprop="image" src="/assets/images/tipologia-di-pompe-1140x380-1.png" alt="" class="main-page-about__video"/>
+            </picture>
         </div>
 
-        <!-- === slide item === -->
+        <div class="container">
+            <article class="main-page-about__article article">
+                <h1 class="article__headline hero__headline">
+                    ПНЕВМАТИЧЕСКИЕ МЕМБРАННЫЕ НАСОСЫ BOXER
+                </h1>
 
-        <div class="item" style="background-image:url(assets/images/tipologia-di-pompe-1140x380-1.png)">
-            <div class="box">
-                <div class="container">
-                    <h2 class="title animated h1" data-animation="fadeInDown">ПНЕВМАТИЧЕСКИЕ МЕМБРАННЫЕ НАСОСЫ BOXER</h2>
-                    <div class="animated" data-animation="fadeInUp">
-                        Гарантия -  3 года!
-                    </div>
-                    <div class="animated" data-animation="fadeInUp">
-                        <a href="https://themeforest.net/item/mobel-furniture-website-template/20382155" target="_blank" class="btn btn-main" ><i class="icon icon-cart"></i>Подробнее</a>
-                    </div>
-                </div>
-            </div>
+                <h3 class="article__type-inner">
+                    Гарантия -  3 года!
+                </h3>
+
+                <a class="link-button link-button_filled link-button_blink article__link-button" href="/raschet-teploobmennika">
+                    Заказать
+                </a>
+            </article>
         </div>
+    </section>
 
-        <!-- === slide item === -->
 
-        <div class="item" style="background-image:url(assets/images/tipologia-di-pompe-1140x380-1.png)">
-            <div class="box">
-                <div class="container">
-                    <h2 class="title animated h1" data-animation="fadeInDown">ПНЕВМАТИЧЕСКИЕ МЕМБРАННЫЕ НАСОСЫ BOXER</h2>
-                    <div class="animated" data-animation="fadeInUp">
-                        Гарантия -  3 года!
-                    </div>
-                    <div class="animated" data-animation="fadeInUp">
-                        <a href="https://themeforest.net/item/mobel-furniture-website-template/20382155" target="_blank" class="btn btn-main" ><i class="icon icon-cart"></i>Подробнее</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div> <!--/owl-slider-->
-</section>
-
-<!-- ========================  Icons slider ======================== -->
-<section class="owl-icons-wrapper owl-icons-frontpage">
-
-    <!-- === header === -->
-
-    <header class="hidden">
-        <h2>Product categories</h2>
-    </header>
-
-    <div class="container">
-
-        <div class="owl-icons">
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-sofa"></i>
-                    <figcaption>Sofa</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-armchair"></i>
-                    <figcaption>Armchairs</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-chair"></i>
-                    <figcaption>Chairs</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-dining-table"></i>
-                    <figcaption>Dining tables</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-media-cabinet"></i>
-                    <figcaption>Media storage</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-table"></i>
-                    <figcaption>Tables</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-bookcase"></i>
-                    <figcaption>Bookcase</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-bedroom"></i>
-                    <figcaption>Bedroom</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-nightstand"></i>
-                    <figcaption>Nightstand</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-children-room"></i>
-                    <figcaption>Children room</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-kitchen"></i>
-                    <figcaption>Kitchen</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-bathroom"></i>
-                    <figcaption>Bathroom</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-wardrobe"></i>
-                    <figcaption>Wardrobe</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-shoe-cabinet"></i>
-                    <figcaption>Shoe cabinet</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-office"></i>
-                    <figcaption>Office</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-bar-set"></i>
-                    <figcaption>Bar sets</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-lightning"></i>
-                    <figcaption>Lightning</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-carpet"></i>
-                    <figcaption>Varpet</figcaption>
-                </figure>
-            </a>
-
-            <!-- === icon item === -->
-
-            <a href="#">
-                <figure>
-                    <i class="f-icon f-icon-accessories"></i>
-                    <figcaption>Accessories</figcaption>
-                </figure>
-            </a>
-
-        </div> <!--/owl-icons-->
-    </div> <!--/container-->
-</section>
-
-<!-- ========================  Products widget ======================== -->
-<section id="section page-products" class="products">
+    <!-- ========================  Products widget ======================== -->
+<section id="page-products" class="section products">
 
     <div class="container">
 
@@ -766,106 +548,122 @@
 
 </section>
 
-<!-- ======================== Quotes ======================== -->
-<section class="section quotes quotes-slider" style="background-image:url(assets/images/gallery-4.jpg)">
+<section class="main-page-slider is_hidden">
     <div class="container">
-
-        <!-- === quotes header === -->
-
         <header>
-            <h2 class="title">What clients say</h2>
+            <h2 class="main-page-slider__headline">What clients say</h2>
         </header>
 
-        <div class="row">
+        <div class="owl-carousel main-page-slider__slider slider">
 
-            <div class="quote-carousel">
+            <!-- === quoute item === -->
 
-                <!-- === quoute item === -->
-
-                <div class="quote">
-                    <div class="image">
-                        <img src="assets/images/user-3.jpg" alt="" />
-                    </div>
-                    <div class="text">
-                        <h4>Jenna Hale</h4>
-                        <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
-                    </div>
-                    <div class="more">
-                        <div class="rating">
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                        </div>
+            <div class="slider__item quote">
+                <div class="image">
+                    <img src="assets/images/user-3.jpg" alt="" />
+                </div>
+                <div class="text">
+                    <h4>Jenna Hale</h4>
+                    <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
+                </div>
+                <div class="more">
+                    <div class="rating">
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
                     </div>
                 </div>
+            </div>
 
-                <!-- === quoute item === -->
+            <!-- === quoute item === -->
 
-                <div class="quote">
-                    <div class="image">
-                        <img src="assets/images/user-1.jpg" alt="" />
-                    </div>
-                    <div class="text">
-                        <h4>Glen Jordan</h4>
-                        <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
-                    </div>
-                    <div class="more">
-                        <div class="rating">
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                        </div>
+            <div class="slider__item quote">
+                <div class="image">
+                    <img src="assets/images/user-1.jpg" alt="" />
+                </div>
+                <div class="text">
+                    <h4>Glen Jordan</h4>
+                    <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
+                </div>
+                <div class="more">
+                    <div class="rating">
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
                     </div>
                 </div>
+            </div>
 
-                <!-- === quoute item === -->
+            <!-- === quoute item === -->
 
-                <div class="quote">
-                    <div class="image">
-                        <img src="assets/images/user-4.jpg" alt="" />
-                    </div>
-                    <div class="text">
-                        <h4>Lea Nils</h4>
-                        <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
-                    </div>
-                    <div class="more">
-                        <div class="rating">
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                        </div>
+            <div class="slider__item quote">
+                <div class="image">
+                    <img src="assets/images/user-4.jpg" alt="" />
+                </div>
+                <div class="text">
+                    <h4>Lea Nils</h4>
+                    <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
+                </div>
+                <div class="more">
+                    <div class="rating">
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
                     </div>
                 </div>
+            </div>
 
-                <!-- === quoute item === -->
+            <!-- === quoute item === -->
 
-                <div class="quote">
-                    <div class="image">
-                        <img src="assets/images/user-5.jpg" alt="" />
-                    </div>
-                    <div class="text">
-                        <h4>Nora Star</h4>
-                        <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
-                    </div>
-                    <div class="more">
-                        <div class="rating">
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                            <span class="icon icon-star"></span>
-                        </div>
+            <div class="slider__item quote">
+                <div class="image">
+                    <img src="assets/images/user-5.jpg" alt="" />
+                </div>
+                <div class="text">
+                    <h4>Nora Star</h4>
+                    <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
+                </div>
+                <div class="more">
+                    <div class="rating">
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
                     </div>
                 </div>
-            </div> <!--/quote-carousel-->
-        </div> <!--/row-->
-    </div> <!--/container-->
+            </div>
+
+            <!-- === quoute item === -->
+
+            <div class="slider__item quote">
+                <div class="image">
+                    <img src="assets/images/user-5.jpg" alt="" />
+                </div>
+                <div class="text">
+                    <h4>Nora Star</h4>
+                    <p>Ipsum dolore eros dolore <br />dolor dolores sit iriure</p>
+                </div>
+                <div class="more">
+                    <div class="rating">
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                        <span class="icon icon-star"></span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!--/.owl-carousel main-page-slider__slider slider-->
+    </div><!--/.wrapper-->
 </section>
 
 <!-- ========================  Contact ======================== -->

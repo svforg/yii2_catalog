@@ -1,0 +1,51 @@
+.contacts-block-form {
+  margin-left: 92px;
+  margin-right: 92px;
+  padding: 72px 0;
+  border: 5px solid $colorBluePrimary;
+  border-radius: $borderRadiusSecondary;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 22px;
+
+      &_mod {
+        width: 100%;
+        margin-top: auto;
+
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__label {
+      margin-bottom: 8px;
+    }
+
+    &__field {
+      max-width: unset;
+    }
+
+    &__button {
+      margin-left: auto;
+    }
+
+    textarea {
+      padding: 12px;
+      resize: none;
+    }
+  }
+  .mb-lg-22 {
+    @media ($laptopsMin) {
+      margin-bottom: 22px;
+    }
+  }
+}

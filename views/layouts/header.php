@@ -10,8 +10,8 @@ NavBar::begin([
 
     echo "<div class=\"navigation navigation-main\">
     
-                        <!-- Setup your logo here-->
-        <a href=\"/\" class=\"logo\"><img src=\"assets/images/logo.png\" alt=\"\" /></a>
+        <!-- Setup your logo here-->
+        <a href=\"/\" class=\"logo\"><img src=\"/assets/images/logo.png\" alt=\"\" /></a>
         
         <!-- Mobile toggle menu -->
         <a href=\"#\" class=\"open-menu\"><i class=\"icon icon-menu\"></i></a>

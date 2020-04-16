@@ -1,0 +1,125 @@
+.single-page-about {
+
+  &__inner {
+    padding: 48px 0 0;
+  }
+
+  &__pic {
+    display: flex;
+    height: 142px;
+    overflow: hidden;
+    @media ($laptopsMin) {
+      justify-content: center;
+    }
+    @media ($largeTabletsMax) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+    overflow: hidden;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+
+    &__field {
+      margin-bottom: 16px;
+    }
+  }
+
+  #sync1 {
+    .item {
+      margin: 5px;
+      text-align: center;
+      border-radius: $borderRadiusPrimary;
+
+      .single-page-about__pic {
+        height: auto!important;
+      }
+
+      .single-page-about__img {
+        max-height: 300px!important;
+      }
+
+    }
+  }
+
+  #sync2 {
+    .owl-stage {
+      display: flex;
+      flex-direction: column;
+      width: 100%!important;
+    }
+
+    .owl-item {
+      width: 100px!important;
+    }
+
+    .item {
+      margin: 5px;
+      color: #FFF;
+      border-radius: $borderRadiusPrimary;
+      text-align: center;
+      cursor: pointer;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border: 1px solid $colorGrayPrimary;
+      transition: border-color $transitionDurationPrimary $transitionFunctionPrimary;
+
+      &:hover {
+        border-color:$colorBluePrimary;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      img {
+        max-height: 100px!important;
+        padding: 8px!important;
+      }
+    }
+
+    .current .item{
+      //
+    }
+
+    .owl-nav,
+    .owl-dots {
+      display: none;
+    }
+  }
+
+  .owl-theme {
+    .owl-nav {
+      /*default owl-theme theme reset .disabled:hover links */
+      [class*='owl-'] {
+        transition: all .3s ease;
+        &.disabled:hover {
+          background-color: #D6D6D6;
+        }
+      }
+
+    }
+  }
+
+  //arrows on first carousel
+  #sync1.owl-theme {
+    position: relative;
+    .owl-next, .owl-prev {
+      width: 22px;
+      height: 40px;
+      margin-top: -20px;
+      position: absolute;
+      top: 50%;
+    }
+    .owl-prev {
+      left: 10px;
+    }
+    .owl-next {
+      right: 10px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+//$colorLinkButtonFilledText        : $colorLightPrimary;
+//$backgroundLinkButtonFilled       : $colorOrangePrimary;
+//$backgroundLinkButtonFilledHover  : $colorOrangeSecondary;
+
+.link-button {
+  display: inline-block;
+  padding: 8px 24px!important; /*bootstrap destroy this style*/
+  overflow: hidden;
+  text-align: center;
+  border-radius: $borderRadiusPrimary;
+  cursor: pointer;
+  transition: color, background $transitionDurationPrimary $transitionFunctionPrimary;
+
+  &_filled {
+    color: $colorLinkButtonFilledText!important;
+    background: $colorBluePrimary;
+
+    &:hover {
+      background: $colorBlueSecondary;
+    }
+  }
+
+  &_blink {
+    &:before {
+      height: 100%;
+      position: absolute;
+      content: '';
+      top: -50%;
+      right: -50%;
+      bottom: -50%;
+      left: -50%;
+      background: linear-gradient( to bottom, rgba( 255, 255, 255, 0.15 ) 0, rgba( 255, 255, 255, 0.75 ) 50%, rgba( 255, 255, 255, 0.15 ) 100%);
+      transform: rotateZ(60deg) translate(0, 800%);
+      animation: sheen 5s infinite ease-in-out 2s;
+    }
+  }
+
+  &_default {
+    color: $colorLightPrimary!important;
+    background: $colorBlueSecondary;
+
+    &:hover {
+      color:  $colorLinkButtonTextHover!important;
+      background: $colorLinkButtonFilledText;
+    }
+  }
+
+  &_light {
+    color:  $colorBluePrimary!important;
+    background:  $colorLightPrimary;
+
+    &:hover {
+      color:  $colorLightPrimary!important;
+      background:  $colorBlueThird;
+    }
+  }
+}
+@keyframes sheen {
+  100% {
+    transform: rotateZ(60deg) translate(0, -800%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

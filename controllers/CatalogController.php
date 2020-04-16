@@ -23,14 +23,16 @@ class CatalogController extends Controller
         $allProductsProvider = new ActiveDataProvider([
             'query' => Product::find()->orderBy('created_at DESC'),
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 9,
+                'forcePageParam' => false,
+                'pageSizeParam' => false
             ],
         ]);
 
         $productInCatProvider = new ActiveDataProvider([
             'query' => Product::find()->where(['category_id' => $children->id])->orderBy('created_at DESC'),
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 10,
             ],
         ]);
 

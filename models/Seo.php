@@ -66,7 +66,7 @@ class Seo extends \yii\db\ActiveRecord
 
     public function saveData($model)
     {
-        $this->seo_title ? $this->seo_title : $model->seo_title;
+        $this->seo_title ? $this->seo_title : $model->name;
 
         $this->entity_id = $model->id;
         $this->entity_type = get_class($model);
@@ -100,7 +100,7 @@ class Seo extends \yii\db\ActiveRecord
 
                     $product = Product::findOne($productId);
 
-                    $slug = $product->name;
+                    $slug = strtolower($product->name);
 
                     return $slug;
                 },

@@ -69,6 +69,7 @@ $this->title = 'Каталог товаров';
 
                                     <?php endforeach;?>
                                 <?php endif;?>
+
                             </ul>
                         </nav>
                     </aside>
@@ -88,7 +89,7 @@ $this->title = 'Каталог товаров';
 
                         'itemOptions' => [
                             'tag' => 'div',
-                            'class' => 'col-sm-6 col-xs-6',
+                            'class' => 'col-sm-4 col-xs-4',
                         ],
 
 
@@ -97,11 +98,11 @@ $this->title = 'Каталог товаров';
 
                         'emptyText' => 'Список пуст',
                         'pager' => [
-                            'firstPageLabel' => 'Первая',
-                            'lastPageLabel' => 'Последняя',
-                            'nextPageLabel' => 'Следующая',
-                            'prevPageLabel' => 'Предыдущая',
-                            'maxButtonCount' => 5,
+                            'firstPageLabel' => '««',
+                            'lastPageLabel' => '»»',
+                            'nextPageLabel' => false,
+                            'prevPageLabel' => false,
+                            'maxButtonCount' => 7,
                         ],
                     ]); ?>
                 </div> <!--/product items-->

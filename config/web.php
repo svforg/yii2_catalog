@@ -94,7 +94,17 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<controller:\w+>/key/<key:[\w+-]*\w+>/?'=>'<controller>/view'
+                '/' => 'site/index',
+                '<controller:\w+>/key/<key:[\w+-]*\w+>/?'=>'<controller>/view',
+
+                'product/<seo_slug:[\w+-]*\w+>' => 'product/view',
+
+                'catalog/page-<page:[\d+-]*\d+>' => 'catalog/index',
+                'catalog/'=>'catalog/index',
+
+                '<module:cabinet>/<controller:\w+>/<id:\d+>' => '<module>/<controller>/view',
+                '<module:cabinet>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
+                '<module:cabinet>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
             ],
         ],
     ],

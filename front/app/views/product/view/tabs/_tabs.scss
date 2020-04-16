@@ -1,0 +1,90 @@
+.single-page-tabs {
+
+  .tabs {
+    padding-bottom: 50px;
+
+    &__nav {
+      display: flex;
+      overflow: hidden;
+      @media ($phonesMax) {
+        flex-direction: column;
+        margin-bottom: 24px;
+      }
+    }
+
+    &__nav-item {
+      display: inherit;
+      margin-right: -1px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__nav-link {
+      @media ($phonesMax) {
+        padding-bottom: 2px;
+        color: $colorDarkPrimary !important;
+        font-weight: 600;
+        text-overflow: ellipsis;
+        text-shadow: none;
+        background: linear-gradient(90deg, var(--color-blue-primary), var(--color-blue-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        box-decoration-break: clone;
+
+        &:after {
+          position: absolute;
+          bottom: 1px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--color-blue-primary), var(--color-blue-secondary));
+          transition: width $transitionDurationPrimary $transitionFunctionSecondary;
+          content: "";
+        }
+
+        &_current {
+          color: $colorBluePrimary !important;
+          &:after {
+            width: 100%;
+          }
+        }
+      }
+
+      @media ($smallTabletsMin) {
+        display: inline-block;
+        padding: 6px 24px;
+        overflow: hidden;
+        color: $colorBluePrimary !important;
+        border: 1px solid $colorBluePrimary;
+        border-bottom: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        transition: all $transitionDurationPrimary $transitionFunctionPrimary !important;
+
+        &:hover {
+          color: $colorBluePrimary !important;
+          //background-color: $colorBlueSecondary;
+          box-shadow: inset 0px 1px 5px 1px $colorBluePrimary,
+          inset 0px 2px 10px 2px $colorBluePrimary;
+        }
+
+        &_current {
+          color: $colorLightPrimary !important;
+          background-color: $colorBluePrimary !important;
+
+          &:hover {
+            color: $colorLightPrimary !important;
+          }
+        }
+      }
+    }
+
+    &__content-inner {
+      padding: 24px;
+      border: 1px solid $colorBluePrimary;
+      border-radius: 0 $borderRadiusSecondary $borderRadiusSecondary $borderRadiusSecondary;
+    }
+  }
+}

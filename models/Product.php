@@ -30,6 +30,7 @@ use yii\helpers\Html;
  */
 class Product extends ActiveRecord
 {
+    const IMAGE_PATH = 'products/';
     public $file;
 
     use \kartik\tree\models\TreeTrait;

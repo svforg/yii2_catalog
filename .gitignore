@@ -42,6 +42,9 @@ $RECYCLE.BIN/
 # composer vendor dir
 /vendor
 
+# database
+/config/db.php
+
 # composer itself is not needed
 composer.phar
 

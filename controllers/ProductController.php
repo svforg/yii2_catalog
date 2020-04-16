@@ -53,16 +53,22 @@ class ProductController extends DefaultController
         ]);
     }
 
-    public function actionView($id)
+    public function actionView($seo_slug)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($seo_slug),
         ]);
     }
 
-    protected function findModel($id)
+    protected function findModel($seo_slug)
     {
-        if (($model = Product::findOne($id)) !== null) {
+//        if (($model = Product::findOne($id)) !== null) {
+//            return $model;
+//        }
+
+        $model = Product::find()->where(['seo.seo_slug' => $seo_slug])->innerjoinWith('seo')->one();
+
+        if ($model !== null) {
             return $model;
         }
 

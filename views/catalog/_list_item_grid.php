@@ -12,7 +12,7 @@ $imageUrl800x = ImageUploader::getImageUrl800x($model);
 <article>
     <div class="info">
         <span>
-            <a href="<?= Url::to(['product/view/', 'id' => $model->id]); ?>" class="mfp-open" data-title="Quick wiew">
+            <a href="<?= Url::to(['product/view/', ]); ?>" class="mfp-open" data-title="Quick wiew">
                 <i class="icon icon-eye"></i>
             </a>
         </span>
@@ -32,7 +32,7 @@ $imageUrl800x = ImageUploader::getImageUrl800x($model);
         </div>
 
         <div class="text">
-            <h2 class="title h4"><a href="<?= Url::to(['product/view/', 'id' => $model->id]); ?>"><?= $model->name ?></a></h2>
+            <h2 class="title h4"><a href="<?= Url::to(['product/view/', 'seo_slug' => strtolower ($model->seo->seo_slug)]); ?>"><?= $model->name ?></a></h2>
             <sub>$ 1499,-</sub>
             <sup>$ 1099,-</sup>
             <span class="description clearfix">
