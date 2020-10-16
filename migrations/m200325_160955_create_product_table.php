@@ -22,6 +22,7 @@ class m200325_160955_create_product_table extends Migration
             'feature_id' =>  $this->integer(),
             'created_at' => $this->integer(),
             'category_id' => $this->integer(),
+            'seo_id' => $this->integer(),
         ]);
 
         $this->createIndex(
